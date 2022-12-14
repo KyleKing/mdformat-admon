@@ -29,14 +29,20 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     separator = "\n\n"  # TODO: Is this configurable?
     indent = " " * 4  # FIXME: Is this configurable?
     title = node.info.strip()
-    body = f"{node.markup} {title}{separator}"
+    title_line = f"!!! {title}"
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
-        elements = [child.render(context) for child in node.children[1:]]
-    body += textwrap.indent(separator.join(elements), indent)
-    return body
+        elements = [child.render(context) for child in node.children]
+    content = textwrap.indent(separator.join(e for e in elements if e), indent)
+    if content:
+        return title_line + "\n" + content
+    return title_line
+
+
+def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:
+    return ""
 
 
 # A mapping from syntax tree node type to a function that renders it.
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
-RENDERERS: Mapping[str, Render] = {"admonition": _render_admon}
+RENDERERS: Mapping[str, Render] = {"admonition": _render_admon, "admonition_title": _render_admon_title}

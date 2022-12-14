@@ -33,7 +33,6 @@ Shows custom title
 
 .
 !!! note Custom title
-
     Some text
 
 .
@@ -79,7 +78,9 @@ Nested blocks
     !!! note
         Some text
 
-            code block
+        ```
+        code block
+        ```
 .
 
 
@@ -110,8 +111,10 @@ But that's a code block
     !!! note
         content
 .
-    !!! note
-        content
+```
+!!! note
+    content
+```
 .
 
 
@@ -122,10 +125,13 @@ Some more indent checks
 
     code block
 .
-  !!! note
-   not a code block
+!!! note
 
-    code block
+not a code block
+
+```
+code block
+```
 .
 
 
@@ -158,8 +164,8 @@ Or several spaces apart
 !!!     note
         xxx
 .
-!!!     note
-        xxx
+!!! note
+    xxx
 .
 
 
@@ -201,9 +207,9 @@ Or in blockquotes
 .
 > !!! note
 >     xxx
->     > yyy
->     zzz
 >
+>     > yyy
+>     > zzz
 .
 
 
@@ -223,5 +229,5 @@ Does not render
     content
 .
 !!!
-    content
+content
 .
