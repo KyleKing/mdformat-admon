@@ -28,10 +28,10 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     """
     separator = "\n\n"  # TODO: Is this configurable?
     indent = " " * 4  # FIXME: Is this configurable?
-    title = node.children[0].render(context)  # or 'node.info.strip()'?
+    title = node.info.strip()
     body = f"{node.markup} {title}{separator}"
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
-        elements = [child.render(context) for child in [*node.walk()][1:]]
+        elements = [child.render(context) for child in node.children[1:]]
     body += textwrap.indent(separator.join(elements), indent)
     return body
 
