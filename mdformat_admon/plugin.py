@@ -26,21 +26,14 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     - https://github.com/executablebooks/mdformat-footnote/blob/80852fc20cfba7fd0330b9ac7a1a4df983542942/mdformat_footnote/plugin.py
 
     """
-    # FIXME: children
-    # > return "\n\n".join([child.markup for child in node.children])
-
-    print(node.pretty())  # FYI: Debugging
-
-    separator = "\n"
-    indent = " " * 4  # FIXME: Make this configurable?
-    body = ""
-    with context.indented(len(indent)):  # TODO: What is this for?
-        elements = [child.render(context) for child in node.children[1:]]
-        body += textwrap.indent((separator + separator).join(elements), indent)
-    first_line = node.children[0].markup
-    result = separator.join([first_line, body])
-    breakpoint()
-    return result
+    separator = "\n\n"  # TODO: Is this configurable?
+    indent = " " * 4  # FIXME: Is this configurable?
+    title = node.children[0].render(context)  # or 'node.info.strip()'?
+    body = f"{node.markup} {title}{separator}"
+    with context.indented(len(indent)):  # Modifies context.env['indent_width']
+        elements = [child.render(context) for child in [*node.walk()][1:]]
+    body += textwrap.indent(separator.join(elements), indent)
+    return body
 
 
 # A mapping from syntax tree node type to a function that renders it.
