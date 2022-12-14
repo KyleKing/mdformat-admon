@@ -33,7 +33,7 @@ dev = ["pre-commit"]
 Homepage = "https://github.com/executablebooks/mdformat-admon"
 
 [project.entry-points."mdformat.parser_extension"]
-admon = "mdformat_admon"
+admonition = "mdformat_admon"
 
 [tool.flit.sdist]
 include = []

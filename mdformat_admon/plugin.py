@@ -12,7 +12,7 @@ def update_mdit(mdit: MarkdownIt) -> None:
 
 
 def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
-    """Render a `RenderTreeNode` of type `admon`.
+    """Render a `RenderTreeNode` of type `admonition`.
 
     Based on:
 
@@ -27,4 +27,4 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
 # A mapping from syntax tree node type to a function that renders it.
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
-RENDERERS: Mapping[str, Render] = {"admon": _render_admon}
+RENDERERS: Mapping[str, Render] = {"admonition": _render_admon}
