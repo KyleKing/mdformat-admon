@@ -32,8 +32,9 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     title_line = f"!!! {title}"
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
         elements = [child.render(context) for child in node.children]
-    content = textwrap.indent(separator.join(e for e in elements if e), indent)
-    if content:
+    if content := textwrap.indent(
+        separator.join(e for e in elements if e), indent
+    ):
         return title_line + "\n" + content
     return title_line
 
