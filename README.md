@@ -62,9 +62,9 @@ or trigger the GitHub Action job, by creating a release with a tag equal to the 
 
 Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.
 
-[ci-badge]: https://github.com/executablebooks/mdformat-admon/workflows/CI/badge.svg?branch=master
-[ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amaster+event%3Apush
-[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-admon/branch/master/graph/badge.svg
+[ci-badge]: https://github.com/executablebooks/mdformat-admon/workflows/CI/badge.svg?branch=main
+[ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
+[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-admon/branch/main/graph/badge.svg
 [cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-admon.svg
 [pypi-link]: https://pypi.org/project/mdformat-admon
