@@ -45,4 +45,7 @@ def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:
 # A mapping from syntax tree node type to a function that renders it.
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
-RENDERERS: Mapping[str, Render] = {"admonition": _render_admon, "admonition_title": _render_admon_title}
+RENDERERS: Mapping[str, Render] = {
+    "admonition": _render_admon,
+    "admonition_title": _render_admon_title,
+}
