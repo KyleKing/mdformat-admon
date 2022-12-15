@@ -8,7 +8,7 @@ An [mdformat](https://github.com/executablebooks/mdformat) plugin for admonition
 
 ## Development
 
-This package utilises [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
+This package utilizes [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
 
 To install these development dependencies:
 
