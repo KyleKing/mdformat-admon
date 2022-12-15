@@ -34,8 +34,7 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     indent = " " * (min(len(prefix), 3) + 1)
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
         elements = [child.render(context) for child in node.children]
-    # See: https://mdformat.readthedocs.io/en/stable/users/configuration_file.html
-    separator = "\n\n"  # FIXME: Use mdformat's 'end_of_line'
+    separator = "\n\n"
     content = textwrap.indent(separator.join(e for e in elements if e), indent)
     return title_line + "\n" + content if content else title_line
 
