@@ -26,19 +26,22 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     - https://github.com/executablebooks/mdformat-footnote/blob/80852fc20cfba7fd0330b9ac7a1a4df983542942/mdformat_footnote/plugin.py
 
     """
-    separator = "\n\n"  # TODO: Is this configurable?
-    indent = " " * 4  # FIXME: Is this configurable?
+    prefix = node.markup.split(" ")[0]
     title = node.info.strip()
-    title_line = f"!!! {title}"
+    title_line = f"{prefix} {title}"
+    # The indent is either 3 or 4 based on the length of the prefix
+    #   Ex: '!!!', '...', '..', '???', '???+', etc.
+    indent = " " * (min(len(prefix), 3) + 1)
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
         elements = [child.render(context) for child in node.children]
+    # See: https://mdformat.readthedocs.io/en/stable/users/configuration_file.html
+    separator = "\n\n"  # FIXME: Use mdformat's 'end_of_line'
     content = textwrap.indent(separator.join(e for e in elements if e), indent)
-    if content:
-        return title_line + "\n" + content
-    return title_line
+    return title_line + "\n" + content if content else title_line
 
 
 def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:
+    """Skip rendering the title when called from the `node.children`."""
     return ""
 
 
