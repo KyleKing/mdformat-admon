@@ -5,7 +5,6 @@ Simple admonition
     *content*
 .
 !!! note
-
     *content*
 .
 
@@ -19,7 +18,6 @@ Could contain block elements too
 
 .
 !!! note
-
     ### heading
 
     ______________________________________________________________________
@@ -48,7 +46,6 @@ Shows no title
 
 .
 !!! note ""
-
     Some text
 
 .
@@ -63,12 +60,10 @@ Closes block after 2 empty lines
     A code block
 .
 !!! note
-
     Some text
 
-```
-A code block
-```
+
+    A code block
 .
 
 
@@ -81,14 +76,10 @@ Nested blocks
             code block
 .
 !!! note
-
     !!! note
-
         Some text
 
-        ```
-        code block
-        ```
+            code block
 .
 
 
@@ -100,7 +91,7 @@ Consecutive admonitions
 .
 !!! note
 
-    !!! warning
+!!! warning
 .
 
 
@@ -109,11 +100,8 @@ Marker may be indented up to 3 chars
    !!! note
        content
 .
-```
-!!! note
-
-    content
-```
+   !!! note
+       content
 .
 
 
@@ -122,11 +110,8 @@ But that's a code block
     !!! note
         content
 .
-```
-!!! note
-
-    content
-```
+    !!! note
+        content
 .
 
 
@@ -137,9 +122,8 @@ Some more indent checks
 
     code block
 .
-!!! note
-
-    not a code block
+  !!! note
+   not a code block
 
     code block
 .
@@ -151,9 +135,9 @@ Type could be adjacent to marker
    xxx
 
 .
-!!! note
+!!!note
+   xxx
 
-    xxx
 .
 
 
@@ -163,9 +147,9 @@ Type could be adjacent to marker and content may be shifted up to 3 chars
       xxx
 
 .
-!!! note
+!!!note
+      xxx
 
-    xxx
 .
 
 
@@ -174,9 +158,8 @@ Or several spaces apart
 !!!     note
         xxx
 .
-!!! note
-
-    xxx
+!!!     note
+        xxx
 .
 
 
@@ -186,7 +169,6 @@ Admonitions self-close at the end of the document
     xxx
 .
 !!! note
-
     xxx
 .
 
@@ -201,11 +183,9 @@ They could be nested in lists
       - d
 .
 - !!! note
-
       - a
       - b
 - !!! warning
-
       - c
       - d
 .
@@ -222,7 +202,8 @@ Or in blockquotes
 > !!! note
 >     xxx
 >     > yyy
->     > zzz
+>     zzz
+>
 .
 
 
@@ -232,7 +213,6 @@ Renders unknown admonition type
     content
 .
 !!! unknown title
-
     content
 .
 
@@ -243,5 +223,5 @@ Does not render
     content
 .
 !!!
-content
+    content
 .
