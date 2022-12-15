@@ -61,8 +61,9 @@ Closes block after 2 empty lines
 !!! note
     Some text
 
-
-    A code block
+```
+A code block
+```
 .
 
 
@@ -101,8 +102,8 @@ Marker may be indented up to 3 chars
    !!! note
        content
 .
-   !!! note
-       content
+!!! note
+    content
 .
 
 
@@ -141,8 +142,8 @@ Type could be adjacent to marker
    xxx
 
 .
-!!!note
-   xxx
+!!! note
+    xxx
 
 .
 
@@ -153,8 +154,8 @@ Type could be adjacent to marker and content may be shifted up to 3 chars
       xxx
 
 .
-!!!note
-      xxx
+!!! note
+    xxx
 
 .
 
