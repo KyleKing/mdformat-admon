@@ -1,66 +1,51 @@
 # mdformat-admon
 
-[![Build Status][ci-badge]][ci-link]
-[![codecov.io][cov-badge]][cov-link]
-[![PyPI version][pypi-badge]][pypi-link]
+[![Build Status][ci-badge]][ci-link] [![codecov.io][cov-badge]][cov-link] [![PyPI version][pypi-badge]][pypi-link]
 
 An [mdformat](https://github.com/executablebooks/mdformat) plugin for admonitions.
 
-## Development
+## Usage
 
-This package utilizes [flit](https://flit.readthedocs.io) as the build engine, and [tox](https://tox.readthedocs.io) for test automation.
+Add this package wherever you use `mdformat` and the plugin will be auto-recognized. No additional configuration necessary. See [additional information on `mdformat` plugins here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)
 
-To install these development dependencies:
+### Pre-commit
 
-```bash
-pip install tox
+```yaml
+repos:
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-admon
 ```
 
-To run the tests:
+### pipx
 
-```bash
-tox
+```sh
+pipx install mdformat
+pipx inject mdformat mdformat-admon
 ```
 
-and with test coverage:
+## Caveats
 
-```bash
-tox -e py37-cov
-```
+This plugin currently only supports admonitions that start with `!!! ...` and won't modify admonitions for Github, which should cover most use cases. Future work is planned for other types.
 
-The easiest way to write tests, is to edit `tests/fixtures.md`
+See the example test file: [./tests/pre-commit-test.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/pre-commit-test.md)
 
-To run the code formatting and style checks:
+As a quick summary:
 
-```bash
-tox -e py37-pre-commit
-```
+- [python-markdown](https://python-markdown.github.io/extensions/admonition/): are fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
+- [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Only `!!!`-blocks are supported (#9)
+- [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
+- [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break*
+- [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
+- [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
+- [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
 
-or directly
+## Contributing
 
-```bash
-pip install pre-commit
-pre-commit run --all
-```
-
-To run the pre-commit hook test:
-
-```bash
-tox -e py37-hook
-```
-
-## Publish to PyPi
-
-Either use flit directly:
-
-```bash
-pip install flit
-flit publish
-```
-
-or trigger the GitHub Action job, by creating a release with a tag equal to the version, e.g. `v0.0.1`.
-
-Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.
+See [CONTRIBUTING.md](https://github.com/KyleKing/mdformat-admon/blob/main/CONTRIBUTING.md)
 
 [ci-badge]: https://github.com/executablebooks/mdformat-admon/workflows/CI/badge.svg?branch=main
 [ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
