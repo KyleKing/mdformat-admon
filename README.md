@@ -1,13 +1,11 @@
 # mdformat-admon
 
-[![Build Status][ci-badge]][ci-link]
+[![Build Status][ci-badge]][ci-link] [![PyPI version][pypi-badge]][pypi-link]
 
 <!-- [![codecov.io][cov-badge]][cov-link]
 [cov-badge]: https://codecov.io/gh/executablebooks/mdformat-admon/branch/main/graph/badge.svg
 [cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
  -->
-
-[![PyPI version][pypi-badge]][pypi-link]
 
 An [mdformat](https://github.com/executablebooks/mdformat) plugin for admonitions.
 
@@ -42,13 +40,14 @@ See the example test file: [./tests/pre-commit-test.md](https://raw.githubuserco
 
 As a quick summary:
 
-- [python-markdown](https://python-markdown.github.io/extensions/admonition/): are fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
-- [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Only `!!!`-blocks are supported (#9)
+- [python-markdown](https://python-markdown.github.io/extensions/admonition/): is fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
+- [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
 - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
-- [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break*
 - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
 - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
-- [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
+- `mdformat` will break admonitions by:
+  - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break*
+  - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
 
 ## Contributing
 
