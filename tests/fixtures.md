@@ -232,3 +232,34 @@ Does not render
 !!!
 content
 .
+
+
+
+FIXME: MKdocs Closed Collapsible Sections
+.
+??? note
+    content
+.
+??? note
+content
+.
+
+
+FIXME: MKdocs Open Collapsible Sections
+.
+???+ note
+    content
+.
+???+ note
+content
+.
+
+
+FIXME: reStructuredText Dot-Syntax
+.
+.. directivename:: arguments
+   :key1: val1
+.
+.. directivename:: arguments
+:key1: val1
+.
