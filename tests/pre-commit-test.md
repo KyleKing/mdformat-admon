@@ -1,6 +1,6 @@
-# Test file
+# Pre-Commit Test File
 
-add your syntax here
+Testing `mdformat-admon` as a `pre-commit` hook (`tox -e py#-hook`)
 
 ## `!!!`-based Admonitions
 
@@ -37,10 +37,9 @@ From: https://python-markdown.github.io/extensions/admonition/
 > **Warning**
 > This is a warning
 
-
 ## RST
 
-**STATUS: Unsupported and *may break***
+**STATUS: Unsupported and *may break*** like the 3rd and 4th examples below
 
 From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions
 
@@ -48,47 +47,50 @@ From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admo
 
 .. contents:: Table of Contents
 
+```rst
 .. contents:: Here's a very long Table of
    Contents title
+```
 
+```rst
 .. contents:: Table of Contents
    :depth: 2
+```
 
 ## MKdocs
 
-**STATUS: Partially supported, but *may break***
+**STATUS: ONly `!!!`-blocks are supported**
 
 Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#removing-the-title
 
 ### Default
 
 !!! note
-
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
-
 
 ### Collapsible
 
+Not currently supported
 
+```md
 ??? note
-
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+```
 
-
+```md
 ???+ note
-
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
+```
 
 ### Inline
 
 !!! info inline end
-
     Lorem ipsum dolor sit amet, consectetur
     adipiscing elit. Nulla et euismod nulla.
     Curabitur feugiat, tortor non consequat
@@ -98,7 +100,6 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions/#rem
 ### Custom Type
 
 !!! pied-piper "Pied Piper"
-
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
     euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
     purus auctor massa, nec semper lorem quam in massa.
