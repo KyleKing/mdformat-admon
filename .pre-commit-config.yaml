@@ -68,7 +68,3 @@ repos:
       - id: yamlfix
         types_or: []
         types: [file, yaml]
-  - repo: https://github.com/rhysd/actionlint
-    rev: v1.6.22
-    hooks:
-      - id: actionlint

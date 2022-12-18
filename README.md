@@ -1,6 +1,13 @@
 # mdformat-admon
 
-[![Build Status][ci-badge]][ci-link] [![codecov.io][cov-badge]][cov-link] [![PyPI version][pypi-badge]][pypi-link]
+[![Build Status][ci-badge]][ci-link]
+
+<!-- [![codecov.io][cov-badge]][cov-link]
+[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-admon/branch/main/graph/badge.svg
+[cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
+ -->
+
+[![PyPI version][pypi-badge]][pypi-link]
 
 An [mdformat](https://github.com/executablebooks/mdformat) plugin for admonitions.
 
@@ -49,7 +56,5 @@ See [CONTRIBUTING.md](https://github.com/KyleKing/mdformat-admon/blob/main/CONTR
 
 [ci-badge]: https://github.com/executablebooks/mdformat-admon/workflows/CI/badge.svg?branch=main
 [ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
-[cov-badge]: https://codecov.io/gh/executablebooks/mdformat-admon/branch/main/graph/badge.svg
-[cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-admon.svg
 [pypi-link]: https://pypi.org/project/mdformat-admon

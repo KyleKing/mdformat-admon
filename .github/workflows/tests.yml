@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9, '3.10']
+        python-version: [3.7, '3.10']
         os: [ubuntu-latest, windows-latest]
 
     steps:
@@ -47,14 +47,14 @@ jobs:
         run: |
           pytest --cov=mdformat_admon --cov-report=xml --cov-report=term-missing
 
-      - name: Upload to Codecov
-        if: matrix.os == 'ubuntu-20.04' && matrix.python-version == 3.7
-        uses: codecov/codecov-action@v1
-        with:
-          name: pytests-py3.7
-          flags: pytests
-          file: ./coverage.xml
-          fail_ci_if_error: true
+      # - name: Upload to Codecov
+      #   if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.10
+      #   uses: codecov/codecov-action@v1
+      #   with:
+      #     name: pytests-py3.10
+      #     flags: pytests
+      #     file: ./coverage.xml
+      #     fail_ci_if_error: false
 
   pre-commit-hook:
     runs-on: ubuntu-latest
