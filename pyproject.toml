@@ -22,7 +22,7 @@ dependencies = [
 ]
 dynamic = ["version", "description"]
 
-[tool.flit.metadata.requires-extra]
+[project.optional-dependencies]
 test = [
     "pytest>=6.0",
     "pytest-cov",
