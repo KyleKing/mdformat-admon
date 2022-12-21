@@ -42,11 +42,12 @@ As a quick summary:
 
 - [python-markdown](https://python-markdown.github.io/extensions/admonition/): is fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
 - [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
-- [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
-- [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
-- [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
+- Unsupported, but won't modify:
+  - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
+  - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
+  - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
 - `mdformat` will break admonitions by:
-  - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break*
+  - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break* by removing or modifying indentation
   - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
 
 ## Contributing
