@@ -235,31 +235,21 @@ content
 
 
 
-FIXME: MKdocs Closed Collapsible Sections
+MKdocs Closed Collapsible Sections
 .
 ??? note
     content
 .
 ??? note
-content
+    content
 .
 
 
-FIXME: MKdocs Open Collapsible Sections
+MKdocs Open Collapsible Sections
 .
 ???+ note
     content
 .
 ???+ note
-content
-.
-
-
-FIXME: reStructuredText Dot-Syntax
-.
-.. directivename:: arguments
-   :key1: val1
-.
-.. directivename:: arguments
-:key1: val1
+    content
 .

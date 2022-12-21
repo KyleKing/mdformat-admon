@@ -31,7 +31,7 @@ From: https://python-markdown.github.io/extensions/admonition/
 
 ## MKdocs
 
-**STATUS: Only `!!!`-blocks are supported**
+**STATUS: Fully supported**
 
 Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 
@@ -44,21 +44,15 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 
 ### Collapsible
 
-**Not currently supported**
-
-```md
 ??? note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
-```
 
-```md
 ???+ note
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
-```
 
 ### Inline
 
@@ -86,37 +80,6 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 > **Warning**
 >
 > This is a warning
-
-## reStructuredText
-
-**STATUS: Unsupported and *will break*** like the 3rd, 4th, and 5th examples below
-
-From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions
-
-.. contents::
-
-.. contents:: Table of Contents
-
-```rst
-.. contents:: Here's a very long Table of
-   Contents title
-```
-
-```rst
-.. contents:: Table of Contents
-   :depth: 2
-```
-
-From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html
-
-```
-.. directivename:: arguments
-   :key1: val1
-   :key2: val2
-
-   This is
-   directive content
-```
 
 ## MyST
 
@@ -185,6 +148,37 @@ From: https://github.com/elviswolcott/remark-admonitions
 :::tip pro tip
 `remark-admonitions` is pretty great!
 :::
+
+## reStructuredText
+
+**STATUS: Unsupported and *will break*** like the 3rd, 4th, and 5th examples below
+
+From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions
+
+.. contents::
+
+.. contents:: Table of Contents
+
+```rst
+.. contents:: Here's a very long Table of
+   Contents title
+```
+
+```rst
+.. contents:: Table of Contents
+   :depth: 2
+```
+
+From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html
+
+```
+.. directivename:: arguments
+   :key1: val1
+   :key2: val2
+
+   This is
+   directive content
+```
 
 ## Obsidian
 

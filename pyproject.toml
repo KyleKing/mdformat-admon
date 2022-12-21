@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "mdformat_admon"
 authors = [
-    { name = "Chris Sewell", email = "executablebooks@gmail.com" },
+    { name = "Kyle King", email = "dev.act.kyle@gmail.com" },
 ]
 readme = "README.md"
 classifiers = [
@@ -30,7 +30,7 @@ test = [
 dev = ["pre-commit"]
 
 [project.urls]
-Homepage = "https://github.com/executablebooks/mdformat-admon"
+Homepage = "https://github.com/KyleKing/mdformat-admon"
 
 [project.entry-points."mdformat.parser_extension"]
 admonition = "mdformat_admon"
