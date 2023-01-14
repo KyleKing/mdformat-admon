@@ -17,14 +17,13 @@ classifiers = [
 keywords = ["mdformat", "markdown", "markdown-it"]
 requires-python = ">=3.7.2"
 dependencies = [
-    "mdformat >=0.7.0,<0.8.0",
-    "mdit-py-plugins >=0.3.2",
+    "mdformat >= 0.7.16",
 ]
 dynamic = ["version", "description"]
 
 [project.optional-dependencies]
 test = [
-    "pytest>=6.0",
+    "pytest >= 7.0",
     "pytest-cov",
 ]
 dev = ["pre-commit"]

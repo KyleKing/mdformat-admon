@@ -43,18 +43,18 @@ As a quick summary:
 - [python-markdown](https://python-markdown.github.io/extensions/admonition/): is fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
 - [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
 - Unsupported, but won't modify:
-  - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
-  - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
-  - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
+    - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
+    - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
+    - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
 - `mdformat` will break admonitions by:
-  - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break* by removing or modifying indentation
-  - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
+    - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break* by removing or modifying indentation
+    - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
 
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/KyleKing/mdformat-admon/blob/main/CONTRIBUTING.md)
 
-[ci-badge]: https://github.com/executablebooks/mdformat-admon/workflows/CI/badge.svg?branch=main
-[ci-link]: https://github.com/executablebooks/mdformat/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
+[ci-badge]: https://github.com/kyleking/mdformat-admon/workflows/CI/badge.svg?branch=main
+[ci-link]: https://github.com/kyleking/mdformat-admon/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-admon.svg
 [pypi-link]: https://pypi.org/project/mdformat-admon
