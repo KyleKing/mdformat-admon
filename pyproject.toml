@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "mdformat_admon"
 authors = [
-    { name = "Chris Sewell", email = "executablebooks@gmail.com" },
+    { name = "Kyle King", email = "dev.act.kyle@gmail.com" },
 ]
 readme = "README.md"
 classifiers = [
@@ -17,20 +17,19 @@ classifiers = [
 keywords = ["mdformat", "markdown", "markdown-it"]
 requires-python = ">=3.7.2"
 dependencies = [
-    "mdformat >=0.7.0,<0.8.0",
-    "mdit-py-plugins >=0.3.2",
+    "mdformat >= 0.7.16",
 ]
 dynamic = ["version", "description"]
 
 [project.optional-dependencies]
 test = [
-    "pytest>=6.0",
+    "pytest >= 7.0",
     "pytest-cov",
 ]
 dev = ["pre-commit"]
 
 [project.urls]
-Homepage = "https://github.com/executablebooks/mdformat-admon"
+Homepage = "https://github.com/KyleKing/mdformat-admon"
 
 [project.entry-points."mdformat.parser_extension"]
 admonition = "mdformat_admon"

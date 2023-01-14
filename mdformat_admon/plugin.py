@@ -4,11 +4,15 @@ from typing import Mapping
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
-from mdit_py_plugins.admon import admon_plugin
+
+from .index_pr58 import admon_plugin
+
+# FIXME: Use latest mdit_py_pluign once my PR is merged
+#   https://github.com/executablebooks/mdit-py-plugins/pull/58/files
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
-    """Update the parser,"""
+    """Update the parser."""
     mdit.use(admon_plugin)
 
 
@@ -35,7 +39,7 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     with context.indented(len(indent)):  # Modifies context.env['indent_width']
         elements = [child.render(context) for child in node.children]
     separator = "\n\n"
-    content = textwrap.indent(separator.join(e for e in elements if e), indent)
+    content = textwrap.indent(separator.join(_e for _e in elements if _e), indent)
     return title_line + "\n" + content if content else title_line
 
 
