@@ -10,7 +10,9 @@ def test_mdformat_text():
     result = mdformat.text(
         content,
         options={"end-of-line": "keep"},
-        extensions={"admonition"},
+        extensions={
+            "admonition",
+        },
     )
 
     assert result == content
