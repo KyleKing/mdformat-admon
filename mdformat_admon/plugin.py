@@ -4,11 +4,7 @@ from typing import Mapping
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
-
-from .index_pr58 import admon_plugin
-
-# FIXME: Use latest mdit_py_pluign once my PR is merged
-#   https://github.com/executablebooks/mdit-py-plugins/pull/58/files
+from mdit_py_plugins.admon import admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
