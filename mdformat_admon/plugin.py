@@ -1,5 +1,5 @@
 import textwrap
-from typing import Mapping
+from typing import List, Mapping
 
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
@@ -31,14 +31,30 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     prefix = node.markup.split(" ")[0]
     title = node.info.strip()
     title_line = f"{prefix} {title}"
-    # The indent is either 3 or 4 based on the length of the prefix
+
+    children = [*node.children]
+    # However, if the admonition is the content tab subtype, different spacing is required for code blocks
+    #   Note: the '=== <...>' paragraph must be the second child for the tabs to work
+    child_2 = children[1] if len(children) >= 2 else None
+    with context.indented(0):
+        is_content_tab = child_2 and (child_2.render(context) or "").startswith("=== ")
+
+    elements: List[str] = []
+    for child in children:
+        rendered = child.render(context)
+        # These code blocks need a custom 4-space indent that .render incorrectly handles (#17)
+        if is_content_tab and child.tag == "code":
+            rendered = textwrap.indent(child.content, " " * 4).rstrip()
+        if rendered:
+            elements.append(rendered)
+    separator = "\n\n"
+
+    # The default indent is either 3 or 4 based on the length of the prefix
     #   Ex: '!!!', '...', '..', '???', '???+', etc.
     indent = " " * (min(len(prefix), 3) + 1)
-    with context.indented(len(indent)):  # Modifies context.env['indent_width']
-        elements = [child.render(context) for child in node.children]
-    separator = "\n\n"
-    content = textwrap.indent(separator.join(_e for _e in elements if _e), indent)
-    return title_line + "\n" + content if content else title_line
+    content = textwrap.indent(separator.join(elements), indent)
+    tile_separator = "\n\n" if is_content_tab else "\n"
+    return title_line + tile_separator + content if content else title_line
 
 
 def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:
