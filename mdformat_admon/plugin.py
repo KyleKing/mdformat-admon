@@ -4,7 +4,9 @@ from typing import Mapping
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
-from mdit_py_plugins.admon import admon_plugin
+
+# TODO: continue to ping mdit_py_plugins owner to release these changes
+from ._local.mdit_py_plugins.admon import admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
