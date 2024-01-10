@@ -42,18 +42,19 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     title = node.info.strip()
     title_line = f"{prefix} {title}"
 
-    children = [*node.children]
-
-    # If a content tab (an admonition subtype: https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage), then the '=== <...>' element will always be the second item
-    child_2 = children[1] if len(children) > 1 else None
-    with context.indented(0):
-        is_content_tab = child_2 and (child_2.render(context) or "").startswith("=== ")
+    # If a content tab is within an admonition (https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage), then the '=== <...>' element will always be the first or second child
+    is_content_tab = False
+    for child in [*node.children][:2]:
+        with context.indented(0):
+            if (child.render(context) or "").startswith("=== "):
+                is_content_tab = True
+                break
 
     # FIXME: This feature should have actually been in `mdformat-mkdocs`
     MKDOCS_INDENT = " " * 4
 
     elements: List[str] = []
-    for child in children:
+    for child in node.children:
         rendered = child.render(context)
         # These code blocks need a custom 4-space indent that .render incorrectly handles (#17)
         if is_content_tab and child.tag == "code":

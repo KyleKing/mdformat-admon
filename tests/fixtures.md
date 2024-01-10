@@ -326,7 +326,8 @@ Ultralytics commands use the following syntax:
         ```
 .
 
-Example from Ultralytics Documentation (https://github.com/KyleKing/ultralytics/blob/0e7221fb62191e18e5ec4f7a9fe6d8927a4446c2/docs/zh/datasets/index.md#L105-L127)
+
+Example from Ultralytics Documentation (https://github.com/ultralytics/ultralytics/blob/0e7221fb62191e18e5ec4f7a9fe6d8927a4446c2/docs/zh/datasets/index.md#L105-L127)
 .
 ### 优化和压缩数据集的示例代码
 
@@ -377,6 +378,51 @@ Example from Ultralytics Documentation (https://github.com/KyleKing/ultralytics/
 通过遵循这些步骤，您可以贡献一个与 Ultralytics 现有结构良好融合的新数据集。
 .
 
+
+Example from Ultralytics Documentation (https://github.com/ultralytics/ultralytics/blob/fd82a671015a30a869d740c45c65f5633d1d93c4/docs/en/datasets/classify/caltech101.md#L60-L79)
+.
+## Citations and Acknowledgments
+
+If you use the Caltech-101 dataset in your research or development work, please cite the following paper:
+
+!!! Quote ""
+
+    === "BibTeX"
+
+        ```bibtex
+        @article{fei2007learning,
+          title={Learning generative visual models from few training examples: An incremental Bayesian approach tested on 101 object categories},
+          author={Fei-Fei, Li and Fergus, Rob and Perona, Pietro},
+          journal={Computer vision and Image understanding},
+          volume={106},
+          number={1},
+          pages={59--70},
+          year={2007},
+          publisher={Elsevier}
+        }
+        ```
+.
+## Citations and Acknowledgments
+
+If you use the Caltech-101 dataset in your research or development work, please cite the following paper:
+
+!!! Quote ""
+
+    === "BibTeX"
+
+        ```bibtex
+        @article{fei2007learning,
+          title={Learning generative visual models from few training examples: An incremental Bayesian approach tested on 101 object categories},
+          author={Fei-Fei, Li and Fergus, Rob and Perona, Pietro},
+          journal={Computer vision and Image understanding},
+          volume={106},
+          number={1},
+          pages={59--70},
+          year={2007},
+          publisher={Elsevier}
+        }
+        ```
+.
 
 Example of non-code content from Material-MKDocs documentation without admonitions
 .
