@@ -41,15 +41,38 @@ To run the pre-commit hook test:
 tox -e py38-hook
 ```
 
+## `ptw` testing
+
+See configuration in `pyproject.toml` for `[tool.pytest-watcher]`
+
+```sh
+pipx install pytest-watcher
+
+ptw .
+```
+
+## Local pipx testing
+
+Run the latest local code anywhere with pipx.
+
+```sh
+pipx install . --include-deps --force --editable
+```
+
 ## Publish to PyPi
 
 Either use flit directly:
 
 ```bash
 pipx install flit
+
+# envchain --set FLIT FLIT_PASSWORD
+export FLIT_USERNAME=__token__
+export eval $(envchain FLIT env | grep FLIT_PASSWORD=)
+
 flit publish
 ```
 
-or trigger the GitHub Action job, by creating a release with a tag equal to the version, e.g. `v0.0.1`.
+or trigger the GitHub Action job, by creating a release with a tag equal to the version, e.g. `v0.0.1` and updating the version in `mdformat_admon/__init__.py`.
 
 Note, this requires generating an API key on PyPi and adding it to the repository `Settings/Secrets`, under the name `PYPI_KEY`.

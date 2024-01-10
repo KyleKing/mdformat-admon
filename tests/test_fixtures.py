@@ -4,6 +4,8 @@ from markdown_it.utils import read_fixture_file
 import mdformat
 import pytest
 
+from .helpers import print_text
+
 FIXTURE_PATH = Path(__file__).parent / "fixtures.md"
 fixtures = read_fixture_file(FIXTURE_PATH)
 
@@ -13,4 +15,5 @@ fixtures = read_fixture_file(FIXTURE_PATH)
 )
 def test_fixtures(line, title, text, expected):
     output = mdformat.text(text, extensions={"admonition"})
+    print_text(output, expected)
     assert output.rstrip() == expected.rstrip()
