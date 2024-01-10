@@ -50,6 +50,30 @@ Shows no title
 .
 
 
+Removes extra quotes from the title
+.
+!!! danger "Don't try this at home"
+    ...
+
+.
+!!! danger "Don't try this at home"
+    ...
+
+.
+
+
+Parse additional classes to support Python markdown (https://github.com/executablebooks/mdit-py-plugins/issues/93#issuecomment-1601822723)
+.
+!!! a b c d inline-classes   "Note: note about "foo"" 
+    ...
+
+.
+!!! a b c d inline-classes   "Note: note about "foo"" 
+    ...
+
+.
+
+
 Closes block after 2 empty lines
 .
 !!! note
