@@ -68,7 +68,7 @@ Parse additional classes to support Python markdown (https://github.com/executab
     ...
 
 .
-!!! a b c d inline-classes   "Note: note about "foo"" 
+!!! a b c d inline-classes   "Note: note about "foo""
     ...
 
 .
