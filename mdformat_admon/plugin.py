@@ -14,6 +14,16 @@ def update_mdit(mdit: MarkdownIt) -> None:
     mdit.use(admon_plugin)
 
 
+# PLANNED: replace with `str.removeprefix` when dropping Python 3.8
+def _removeprefix(_str: str, prefix: str):
+    return _str[len(prefix) :] if _str.startswith(prefix) else _str
+
+
+# PLANNED: replace with `str.removesuffix` when dropping Python 3.8
+def _removesuffix(_str: str, suffix: str):
+    return _str[: -1 * len(suffix)] if _str.endswith(suffix) else _str
+
+
 def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     """Render a `RenderTreeNode` of type `admonition`.
 
@@ -39,13 +49,17 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     with context.indented(0):
         is_content_tab = child_2 and (child_2.render(context) or "").startswith("=== ")
 
-    # Render the children to strings
+    # FIXME: This feature should have actually been in `mdformat-mkdocs`
+    MKDOCS_INDENT = " " * 4
+
     elements: List[str] = []
     for child in children:
         rendered = child.render(context)
         # These code blocks need a custom 4-space indent that .render incorrectly handles (#17)
         if is_content_tab and child.tag == "code":
-            rendered = textwrap.indent(child.content, " " * 4).rstrip()
+            rendered = _removesuffix(_removeprefix(rendered, "````"), "````")
+            rendered = textwrap.indent(rendered, MKDOCS_INDENT).strip()
+            rendered = MKDOCS_INDENT + rendered
         if rendered:
             elements.append(rendered)
     separator = "\n\n"

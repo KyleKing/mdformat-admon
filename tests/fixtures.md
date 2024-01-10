@@ -325,3 +325,126 @@ Ultralytics commands use the following syntax:
         model.MODE(ARGS)
         ```
 .
+
+Example from Ultralytics Documentation (https://github.com/KyleKing/ultralytics/blob/0e7221fb62191e18e5ec4f7a9fe6d8927a4446c2/docs/zh/datasets/index.md#L105-L127)
+.
+### 优化和压缩数据集的示例代码
+
+!!! Example "优化和压缩数据集"
+
+    === "Python"
+
+    ```python
+    from pathlib import Path
+    from ultralytics.data.utils import compress_one_image
+    from ultralytics.utils.downloads import zip_directory
+
+    # 定义数据集目录
+    path = Path('path/to/dataset')
+
+    # 优化数据集中的图像（可选）
+    for f in path.rglob('*.jpg'):
+        compress_one_image(f)
+
+    # 将数据集压缩成 'path/to/dataset.zip'
+    zip_directory(path)
+    ```
+
+通过遵循这些步骤，您可以贡献一个与 Ultralytics 现有结构良好融合的新数据集。
+.
+### 优化和压缩数据集的示例代码
+
+!!! Example "优化和压缩数据集"
+
+    === "Python"
+
+        ```python
+        from pathlib import Path
+        from ultralytics.data.utils import compress_one_image
+        from ultralytics.utils.downloads import zip_directory
+
+        # 定义数据集目录
+        path = Path('path/to/dataset')
+
+        # 优化数据集中的图像（可选）
+        for f in path.rglob('*.jpg'):
+            compress_one_image(f)
+
+        # 将数据集压缩成 'path/to/dataset.zip'
+        zip_directory(path)
+        ```
+
+通过遵循这些步骤，您可以贡献一个与 Ultralytics 现有结构良好融合的新数据集。
+.
+
+
+Example of non-code content from Material-MKDocs documentation without admonitions
+.
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+.
+=== "Unordered list"
+
+```
+* Sed sagittis eleifend rutrum
+* Donec vitae suscipit est
+* Nulla tempor lobortis orci
+```
+
+=== "Ordered list"
+
+```
+1. Sed sagittis eleifend rutrum
+2. Donec vitae suscipit est
+3. Nulla tempor lobortis orci
+```
+.
+
+
+Example from Material-MKDocs documentation within an admonition
+.
+!!! example
+
+    === "Unordered List"
+
+        ```markdown
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
+        ```
+
+    === "Ordered List"
+
+        ```markdown
+        1. Sed sagittis eleifend rutrum
+        2. Donec vitae suscipit est
+        3. Nulla tempor lobortis orci
+        ```
+.
+!!! example
+
+    === "Unordered List"
+
+        ```markdown
+        * Sed sagittis eleifend rutrum
+        * Donec vitae suscipit est
+        * Nulla tempor lobortis orci
+        ```
+
+    === "Ordered List"
+
+        ```markdown
+        1. Sed sagittis eleifend rutrum
+        2. Donec vitae suscipit est
+        3. Nulla tempor lobortis orci
+        ```
+.
