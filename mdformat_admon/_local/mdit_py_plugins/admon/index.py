@@ -11,7 +11,6 @@ from typing import TYPE_CHECKING, Callable, List, Sequence, Tuple
 
 from markdown_it import MarkdownIt
 from markdown_it.rules_block import StateBlock
-from mdit_py_plugins.utils import is_code_block
 
 if TYPE_CHECKING:
     from markdown_it.renderer import RendererProtocol
@@ -70,10 +69,25 @@ def _extra_classes(markup: str) -> list[str]:
     return []
 
 
+# FIXME: `is_code_block` was added in 0.4.0, which is blocked by mdformat-gfm pinning mdit_py_plugins<0.4
+# from mdit_py_plugins.utils import is_code_block
+
+
+def _is_code_block(state: StateBlock, line: int) -> bool:
+    """Check if the line is part of a code block, compat for markdown-it-py v2."""
+    try:
+        # markdown-it-py v3+
+        return state.is_code_block(line)
+    except AttributeError:
+        pass
+
+    return (state.sCount[line] - state.blkIndent) >= 4
+
+
 def admonition(  # noqa: C901
     state: StateBlock, startLine: int, endLine: int, silent: bool
 ) -> bool:
-    if is_code_block(state, startLine):
+    if _is_code_block(state, startLine):
         return False
 
     start = state.bMarks[startLine] + state.tShift[startLine]
