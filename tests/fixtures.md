@@ -277,3 +277,51 @@ MKdocs Open Collapsible Sections
 ???+ note
     content
 .
+
+
+Support Content Tabs (https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#grouping-code-blocks). Resolves #17: https://github.com/KyleKing/mdformat-admon/issues/17
+.
+Ultralytics commands use the following syntax:
+
+!!! Example
+
+    === "CLI"
+
+        ```bash
+        yolo TASK MODE ARGS
+        ```
+
+    === "Python"
+
+        ```python
+        from ultralytics import YOLO
+
+        # Load a YOLOv8 model from a pre-trained weights file
+        model = YOLO('yolov8n.pt')
+
+        # Run MODE mode using the custom arguments ARGS (guess TASK)
+        model.MODE(ARGS)
+        ```
+.
+Ultralytics commands use the following syntax:
+
+!!! Example
+
+    === "CLI"
+
+        ```bash
+        yolo TASK MODE ARGS
+        ```
+
+    === "Python"
+
+        ```python
+        from ultralytics import YOLO
+
+        # Load a YOLOv8 model from a pre-trained weights file
+        model = YOLO('yolov8n.pt')
+
+        # Run MODE mode using the custom arguments ARGS (guess TASK)
+        model.MODE(ARGS)
+        ```
+.
