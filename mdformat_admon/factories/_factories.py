@@ -69,8 +69,8 @@ class AdmonState(NamedTuple):
     blkIndent: int
 
 
-class Admonition(NamedTuple):
-    """Admonition data for rendering."""
+class AdmonitionData(NamedTuple):
+    """AdmonitionData data for rendering."""
 
     old_state: AdmonState
     marker: str
@@ -108,16 +108,19 @@ def search_admon_end(state: StateBlock, start_line: int, end_line: int) -> int:
     return next_line
 
 
-def parse_possible_admon_factory(
+def parse_possible_whitespace_admon_factory(
     markers: Set[str],
-) -> Callable[[StateBlock, int, int, bool], Union[Admonition, bool]]:
+) -> Callable[[StateBlock, int, int, bool], Union[AdmonitionData, bool]]:
     expected_marker_len = 3  # Regardless of extra chars, block indent stays the same
     marker_first_chars = {_m[0] for _m in markers}
     max_marker_len = max(len(_m) for _m in markers)
 
-    def parse_possible_admon(
-        state: StateBlock, start_line: int, end_line: int, silent: bool
-    ) -> Union[Admonition, bool]:
+    def parse_possible_whitespace_admon(
+        state: StateBlock,
+        start_line: int,
+        end_line: int,
+        silent: bool,
+    ) -> Union[AdmonitionData, bool]:
         if is_code_block(state, start_line):
             return False
 
@@ -167,7 +170,7 @@ def parse_possible_admon_factory(
 
         # this will prevent lazy continuations from ever going past our end marker
         state.lineMax = next_line
-        return Admonition(
+        return AdmonitionData(
             old_state=old_state,
             marker=marker,
             markup=markup,
@@ -175,49 +178,13 @@ def parse_possible_admon_factory(
             next_line=next_line,
         )
 
-    return parse_possible_admon
+    return parse_possible_whitespace_admon
 
 
 @contextmanager
 def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None, None]:
     yield state.push(f"{name}_open", kind, 1)
     state.push(f"{name}_close", kind, -1)
-
-
-def format_python_markdown_admon_markup(
-    state: StateBlock,
-    start_line: int,
-    admonition: Admonition,
-) -> None:
-    tags, title = parse_tag_and_title(admonition.meta_text)
-    tag = tags[0]
-
-    with new_token(state, "admonition", "div") as token:
-        token.markup = admonition.markup
-        token.block = True
-        token.attrs = {"class": " ".join(["admonition", *tags])}
-        token.meta = {"tag": tag}
-        token.info = admonition.meta_text
-        token.map = [start_line, admonition.next_line]
-
-        if title:
-            title_markup = f"{admonition.markup} {tag}"
-            with new_token(state, "admonition_title", "p") as token:
-                token.markup = title_markup
-                token.attrs = {"class": "admonition-title"}
-                token.map = [start_line, start_line + 1]
-
-                token = state.push("inline", "", 0)
-                token.content = title
-                token.map = [start_line, start_line + 1]
-                token.children = []
-
-        state.md.block.tokenize(state, start_line + 1, admonition.next_line)
-
-    state.parentType = admonition.old_state.parentType
-    state.lineMax = admonition.old_state.lineMax
-    state.blkIndent = admonition.old_state.blkIndent
-    state.line = admonition.next_line
 
 
 def default_render(
@@ -235,7 +202,8 @@ RenderType = Callable[..., str]
 
 
 def admon_plugin_factory(
-    prefix: str, logic: Callable[[StateBlock, int, int, bool], bool]
+    prefix: str,
+    logic: Callable[[StateBlock, int, int, bool], bool],
 ) -> Callable[[MarkdownIt, None | RenderType], None]:
     def admon_plugin(md: MarkdownIt, render: None | RenderType = None) -> None:
         """Plugin to use
@@ -267,7 +235,7 @@ def admon_plugin_factory(
         md.add_render_rule(f"{prefix}_title_close", render)
 
         options: RuleOptionsType = {
-            "alt": ["paragraph", "reference", "blockquote", "list"]
+            "alt": ["paragraph", "reference", "blockquote", "list"],
         }
         md.block.ruler.before("fence", prefix, logic, options)
 

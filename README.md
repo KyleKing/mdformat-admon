@@ -41,7 +41,7 @@ See the example test file: [./tests/pre-commit-test.md](https://raw.githubuserco
 As a quick summary:
 
 - [python-markdown](https://python-markdown.github.io/extensions/admonition/): is fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
-- [MKdocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
+- [MKDocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
 - Unsupported, but won't modify:
     - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
     - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify

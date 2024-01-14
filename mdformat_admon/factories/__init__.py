@@ -1,8 +1,7 @@
 from ._factories import (
-    Admonition,
+    AdmonitionData,
     admon_plugin_factory,
-    format_python_markdown_admon_markup,
     new_token,
-    parse_possible_admon_factory,
+    parse_possible_whitespace_admon_factory,
     parse_tag_and_title,
 )

@@ -3,19 +3,19 @@ from typing import Any, Dict
 from markdown_it.rules_block import StateBlock
 
 from ..factories import (
-    Admonition,
+    AdmonitionData,
     admon_plugin_factory,
-    format_python_markdown_admon_markup,
     new_token,
-    parse_possible_admon_factory,
+    parse_possible_whitespace_admon_factory,
     parse_tag_and_title,
 )
+from .python_markdown_admon import format_python_markdown_admon_markup
 
 
 def format_admon_markup(
     state: StateBlock,
     start_line: int,
-    admonition: Admonition,
+    admonition: AdmonitionData,
 ) -> None:
     if admonition.marker == "!!!":
         return format_python_markdown_admon_markup(state, start_line, admonition)
@@ -54,11 +54,16 @@ def format_admon_markup(
 
 
 def admonition_logic(
-    state: StateBlock, startLine: int, endLine: int, silent: bool
+    state: StateBlock,
+    startLine: int,
+    endLine: int,
+    silent: bool,
 ) -> bool:
-    parse_possible_admon = parse_possible_admon_factory(markers={"!!!", "???", "???+"})
-    result = parse_possible_admon(state, startLine, endLine, silent)
-    if isinstance(result, Admonition):
+    parse_possible_whitespace_admon = parse_possible_whitespace_admon_factory(
+        markers={"!!!", "???", "???+"}
+    )
+    result = parse_possible_whitespace_admon(state, startLine, endLine, silent)
+    if isinstance(result, AdmonitionData):
         format_admon_markup(state, startLine, admonition=result)
         return True
     return result

@@ -9,19 +9,9 @@ from .plugins import mkdocs_admon_plugin, python_markdown_admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
-    """Update the parser."""
+    """Update the parser with supported formats."""
     mdit.use(python_markdown_admon_plugin)
     mdit.use(mkdocs_admon_plugin)
-
-
-# PLANNED: replace with `str.removeprefix` when dropping Python 3.8
-def _removeprefix(_str: str, prefix: str):
-    return _str[len(prefix) :] if _str.startswith(prefix) else _str
-
-
-# PLANNED: replace with `str.removesuffix` when dropping Python 3.8
-def _removesuffix(_str: str, suffix: str):
-    return _str[: -1 * len(suffix)] if _str.endswith(suffix) else _str
 
 
 def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
@@ -42,36 +32,19 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     title = node.info.strip()
     title_line = f"{prefix} {title}"
 
-    # If a content tab is within an admonition (https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage), then the '=== <...>' element will always be the first or second child
-    is_content_tab = False
-    for child in [*node.children][:2]:
-        with context.indented(0):
-            if (child.render(context) or "").startswith("=== "):
-                is_content_tab = True
-                break
-
-    # FIXME: This feature should have actually been in `mdformat-mkdocs`
-    MKDOCS_INDENT = " " * 4
-
     elements: List[str] = []
     for child in node.children:
         rendered = child.render(context)
-        # These code blocks need a custom 4-space indent that .render incorrectly handles (#17)
-        if is_content_tab and child.tag == "code":
-            rendered = _removesuffix(_removeprefix(rendered, "````"), "````")
-            rendered = textwrap.indent(rendered, MKDOCS_INDENT).strip()
-            rendered = MKDOCS_INDENT + rendered
         if rendered:
             elements.append(rendered)
     separator = "\n\n"
 
     # Then indent to either 3 or 4 based on the length of the prefix
-    #   Possible prefixes: '!!!', '...', '..', '???', '???+', etc.
+    #   Possible prefixes: '!!!', '???', '???+', etc.
     indent = " " * (min(len(prefix), 3) + 1)
     content = textwrap.indent(separator.join(elements), indent)
 
-    tile_separator = "\n\n" if is_content_tab else "\n"
-    return title_line + tile_separator + content if content else title_line
+    return title_line + "\n" + content if content else title_line
 
 
 def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:

@@ -29,7 +29,7 @@ From: https://python-markdown.github.io/extensions/admonition/
 !!! danger highlight blink "Don't try this at home"
     ...
 
-## MKdocs
+## MKDocs
 
 **STATUS: Fully supported**
 
