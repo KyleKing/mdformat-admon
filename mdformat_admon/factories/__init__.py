@@ -1,4 +1,4 @@
-from ._helpers import (  # noqa: F401
+from ._factories import (
     Admonition,
     admon_plugin_factory,
     format_python_markdown_admon_markup,

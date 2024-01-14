@@ -2,4 +2,4 @@
 
 __version__ = "1.1.3"
 
-from .plugin import RENDERERS, update_mdit  # noqa: F401
+from .plugin import RENDERERS, update_mdit

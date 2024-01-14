@@ -5,13 +5,13 @@ from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
-# TODO: continue to ping mdit_py_plugins owner to release these changes
-from ._local.mdit_py_plugins.admon import admon_plugin
+from .plugins import mkdocs_admon_plugin, python_markdown_admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
     """Update the parser."""
-    mdit.use(admon_plugin)
+    mdit.use(python_markdown_admon_plugin)
+    mdit.use(mkdocs_admon_plugin)
 
 
 # PLANNED: replace with `str.removeprefix` when dropping Python 3.8

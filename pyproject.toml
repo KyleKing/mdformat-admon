@@ -18,6 +18,7 @@ keywords = ["mdformat", "markdown", "markdown-it"]
 requires-python = ">=3.8.0"
 dependencies = [
     "mdformat >= 0.7.16",
+    "mdit-py-plugins >= 0.4.0",
 ]
 dynamic = ["version", "description"]
 
