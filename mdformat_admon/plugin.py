@@ -1,5 +1,9 @@
+"""Auto-loaded plugin for mdformat."""
+
+from __future__ import annotations
+
 import textwrap
-from typing import List, Mapping
+from typing import Mapping
 
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
@@ -32,7 +36,7 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     title = node.info.strip()
     title_line = f"{prefix} {title}"
 
-    elements: List[str] = []
+    elements: list[str] = []
     for child in node.children:
         rendered = child.render(context)
         if rendered:
@@ -47,7 +51,10 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     return title_line + "\n" + content if content else title_line
 
 
-def _render_admon_title(node: RenderTreeNode, context: RenderContext) -> str:
+def _render_admon_title(
+    node: RenderTreeNode,  # noqa: ARG001
+    context: RenderContext,  # noqa: ARG001
+) -> str:
     """Skip rendering the title when called from the `node.children`."""
     return ""
 

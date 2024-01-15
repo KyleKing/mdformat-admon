@@ -1,4 +1,8 @@
-from typing import Any, Dict
+"""MKDocs Admonition Plugin."""
+
+from __future__ import annotations
+
+from typing import Any
 
 from markdown_it.rules_block import StateBlock
 
@@ -17,8 +21,10 @@ def format_admon_markup(
     start_line: int,
     admonition: AdmonitionData,
 ) -> None:
+    """Format markup."""
     if admonition.marker == "!!!":
-        return format_python_markdown_admon_markup(state, start_line, admonition)
+        format_python_markdown_admon_markup(state, start_line, admonition)
+        return
 
     tags, title = parse_tag_and_title(admonition.meta_text)
     tag = tags[0]
@@ -26,7 +32,7 @@ def format_admon_markup(
     with new_token(state, "admonition", "details") as token:
         token.markup = admonition.markup
         token.block = True
-        attrs: Dict[str, Any] = {"class": " ".join(tags)}
+        attrs: dict[str, Any] = {"class": " ".join(tags)}
         if admonition.markup.endswith("+"):
             attrs["open"] = "open"
         token.attrs = attrs
@@ -36,14 +42,14 @@ def format_admon_markup(
 
         if title:
             title_markup = f"{admonition.markup} {tag}"
-            with new_token(state, "admonition_title", "summary") as token:
-                token.markup = title_markup
-                token.map = [start_line, start_line + 1]
+            with new_token(state, "admonition_title", "summary") as tkn_title:
+                tkn_title.markup = title_markup
+                tkn_title.map = [start_line, start_line + 1]
 
-                token = state.push("inline", "", 0)
-                token.content = title
-                token.map = [start_line, start_line + 1]
-                token.children = []
+                tkn_inline = state.push("inline", "", 0)
+                tkn_inline.content = title
+                tkn_inline.map = [start_line, start_line + 1]
+                tkn_inline.children = []
 
         state.md.block.tokenize(state, start_line + 1, admonition.next_line)
 
@@ -59,8 +65,19 @@ def admonition_logic(
     endLine: int,
     silent: bool,
 ) -> bool:
+    """Parse MKDocs-style Admonitions.
+
+    `Such as collapsible blocks
+    <https://squidfunk.github.io/mkdocs-material/reference/admonitions/#collapsible-blocks>`.
+
+    .. code-block:: md
+
+        ???+ note
+            *content*
+
+    """
     parse_possible_whitespace_admon = parse_possible_whitespace_admon_factory(
-        markers={"!!!", "???", "???+"}
+        markers={"!!!", "???", "???+"},
     )
     result = parse_possible_whitespace_admon(state, startLine, endLine, silent)
     if isinstance(result, AdmonitionData):

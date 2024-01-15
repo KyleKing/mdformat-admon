@@ -1,18 +1,10 @@
+"""Note, this is ported from `markdown-it-admon<https://github.com/commenthol/markdown-it-admon>`."""
+
 from __future__ import annotations
 
 from contextlib import contextmanager, suppress
 import re
-from typing import (
-    TYPE_CHECKING,
-    Callable,
-    Generator,
-    List,
-    NamedTuple,
-    Sequence,
-    Set,
-    Tuple,
-    Union,
-)
+from typing import TYPE_CHECKING, Callable, Generator, NamedTuple, Sequence
 
 from markdown_it import MarkdownIt
 from markdown_it.rules_block import StateBlock
@@ -25,7 +17,7 @@ if TYPE_CHECKING:
     from markdown_it.utils import EnvType, OptionsDict
 
 
-def _get_multiple_tags(meta_text: str) -> Tuple[List[str], str]:
+def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
     """Check for multiple tags when the title is double quoted."""
     re_tags = re.compile(r'^\s*(?P<tokens>[^"]+)\s+"(?P<title>.*)"\S*$')
     match = re_tags.match(meta_text)
@@ -35,7 +27,7 @@ def _get_multiple_tags(meta_text: str) -> Tuple[List[str], str]:
     raise ValueError("No match found for parameters")
 
 
-def parse_tag_and_title(admon_meta_text: str) -> Tuple[List[str], str]:
+def parse_tag_and_title(admon_meta_text: str) -> tuple[list[str], str]:
     """Separate the tag name from the admonition title."""
     meta_text = admon_meta_text.strip()
     if not meta_text:
@@ -109,8 +101,8 @@ def search_admon_end(state: StateBlock, start_line: int, end_line: int) -> int:
 
 
 def parse_possible_whitespace_admon_factory(
-    markers: Set[str],
-) -> Callable[[StateBlock, int, int, bool], Union[AdmonitionData, bool]]:
+    markers: set[str],
+) -> Callable[[StateBlock, int, int, bool], AdmonitionData | bool]:
     expected_marker_len = 3  # Regardless of extra chars, block indent stays the same
     marker_first_chars = {_m[0] for _m in markers}
     max_marker_len = max(len(_m) for _m in markers)
@@ -120,7 +112,7 @@ def parse_possible_whitespace_admon_factory(
         start_line: int,
         end_line: int,
         silent: bool,
-    ) -> Union[AdmonitionData, bool]:
+    ) -> AdmonitionData | bool:
         if is_code_block(state, start_line):
             return False
 
@@ -195,7 +187,7 @@ def default_render(
     env: EnvType,
 ) -> str:
     """Default render if not specified."""
-    return self.renderToken(tokens, idx, _options, env)  # type: ignore
+    return self.renderToken(tokens, idx, _options, env)
 
 
 RenderType = Callable[..., str]
@@ -206,27 +198,6 @@ def admon_plugin_factory(
     logic: Callable[[StateBlock, int, int, bool], bool],
 ) -> Callable[[MarkdownIt, None | RenderType], None]:
     def admon_plugin(md: MarkdownIt, render: None | RenderType = None) -> None:
-        """Plugin to use
-        `python-markdown style admonitions
-        <https://python-markdown.github.io/extensions/admonition>`_.
-
-        .. code-block:: md
-
-            !!! note
-                *content*
-
-        `And mkdocs-style collapsible blocks
-        <https://squidfunk.github.io/mkdocs-material/reference/admonitions/#collapsible-blocks>`_.
-
-        .. code-block:: md
-
-            ???+ note
-                *content*
-
-        Note, this is ported from
-        `markdown-it-admon
-        <https://github.com/commenthol/markdown-it-admon>`_.
-        """
         render = render or default_render
 
         md.add_render_rule(f"{prefix}_open", render)
