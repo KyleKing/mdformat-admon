@@ -1,4 +1,4 @@
-# mdformat-admon
+# `mdformat-admon`
 
 [![Build Status][ci-badge]][ci-link] [![PyPI version][pypi-badge]][pypi-link]
 
@@ -7,13 +7,13 @@
 [cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
  -->
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for admonitions.
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for `admonitions`, a set of helpers for supporting new admonition syntaxes, and tool for rendering admonition HTML.
 
-## Usage
+## `mdformat` Usage
 
 Add this package wherever you use `mdformat` and the plugin will be auto-recognized. No additional configuration necessary. See [additional information on `mdformat` plugins here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)
 
-### Pre-commit
+### Pre-Commit
 
 ```yaml
 repos:
@@ -32,24 +32,42 @@ pipx install mdformat
 pipx inject mdformat mdformat-admon
 ```
 
-## Caveats
+## HTML Rendering
 
-This plugin currently only supports admonitions that start with `!!! ...` and won't modify admonitions for Github, which should cover most use cases. Future work is planned for other types.
+To generate HTML output, any of the internal plugins can be imported as needed.
+
+```py
+from markdown_it import MarkdownIt
+from mdformat_admon.plugins import python_markdown_admon_plugin
+
+md = MarkdownIt("commonmark")
+md.use(plugin)
+
+text = '!!! note ""\n    *content*'
+md.render(text)
+# <div class="admonition note">
+# <p><em>content</em></p>
+# </div>
+```
+
+## Extensibility
+
+Because admonition syntax varies wildly between implementations, this package provides a set of helpers for building new admonition parsers under `mdformat_admon.factories`.
+
+- Supported by `mdformat-admon`
+    - [python-markdown](https://python-markdown.github.io/extensions/admonition)
+- Supported by other packages
+    - [`mdformat-mkdocs`](https://github.com/KyleKing/mdformat-mkdocs)
+        - [MKDocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions)
+- Currently Unsupported (or at least not known to be supported)
+    - [Github](https://github.com/orgs/community/discussions/16925)
+    - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html)
+    - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions)
+    - [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition)
+    - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions) (Note: this plugin *may break* these admonitions by removing or modifying indentation)
+    - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts) (Note: this plugin *may break* these admonitions by adding extra characters)
 
 See the example test file: [./tests/pre-commit-test.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/pre-commit-test.md)
-
-As a quick summary:
-
-- [python-markdown](https://python-markdown.github.io/extensions/admonition/): is fully supported by `mdformat-admon` and tested extensively in [./tests/fixtures.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/fixtures.md)
-- [MKDocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions): Is fully supported
-- Unsupported, but won't modify:
-    - [Github](https://github.com/orgs/community/discussions/16925): Unsupported and will not modify
-    - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html): Unsupported and will not modify
-    - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions): Unsupported and will not modify
-    - [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition): Unsupported and will not modify
-- `mdformat` will break admonitions by:
-    - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions): Unsupported and *will break* by removing or modifying indentation
-    - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts): Unsupported and *will break* because `mdformat` adds extra characters
 
 ## Contributing
 
