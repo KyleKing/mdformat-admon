@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from contextlib import contextmanager, suppress
 import re
+from contextlib import contextmanager, suppress
 from typing import TYPE_CHECKING, Callable, Generator, NamedTuple, Sequence
 
 from markdown_it import MarkdownIt

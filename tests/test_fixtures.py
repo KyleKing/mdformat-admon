@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from markdown_it.utils import read_fixture_file
 import mdformat
 import pytest
+from markdown_it.utils import read_fixture_file
 
 from .helpers import print_text
 
