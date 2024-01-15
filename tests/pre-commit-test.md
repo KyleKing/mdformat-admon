@@ -8,8 +8,6 @@ Testing `mdformat-admon` as a `pre-commit` hook (`tox -e py#-hook`)
 
 ## Python-Markdown
 
-**STATUS: Full support for formatting by `mdformat-admon`**
-
 From: https://python-markdown.github.io/extensions/admonition/
 
 !!! type "optional explicit title within double quotes"
@@ -31,8 +29,6 @@ From: https://python-markdown.github.io/extensions/admonition/
 
 ## MKDocs
 
-**STATUS: Fully supported**
-
 Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 
 ### Default
@@ -45,14 +41,14 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 ### Collapsible
 
 ??? note
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
 
 ???+ note
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
 
 ### Inline
 
@@ -72,8 +68,6 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 
 ## Github
 
-**STATUS: Unsupported and will not modify**
-
 > **Note**
 > This is a note
 
@@ -82,8 +76,6 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 > This is a warning
 
 ## MyST
-
-**STATUS: Unsupported and will not modify**
 
 From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html
 
@@ -141,8 +133,6 @@ But the next block will be parsed as raw text
 
 ## Remark-Admonitions
 
-**STATUS: Unsupported and will not modify**
-
 From: https://github.com/elviswolcott/remark-admonitions
 
 :::tip pro tip
@@ -150,8 +140,6 @@ From: https://github.com/elviswolcott/remark-admonitions
 :::
 
 ## reStructuredText
-
-**STATUS: Unsupported and *will break*** like the 3rd, 4th, and 5th examples below
 
 From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions
 
@@ -184,8 +172,6 @@ From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.h
 
 ## (New) Callouts
 
-**STATUS: Unsupported and *will break*** because `mdformat` adds extra characters
-
 From: https://help.obsidian.md/How+to/Use+callouts
 
 ```
@@ -202,8 +188,6 @@ From: https://help.obsidian.md/How+to/Use+callouts
 ```
 
 ## (Old) Plugin
-
-**STATUS: Unsupported and will not modify**
 
 From: https://github.com/valentine195/obsidian-admonition
 

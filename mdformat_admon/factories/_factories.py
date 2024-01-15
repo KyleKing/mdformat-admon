@@ -187,7 +187,7 @@ def default_render(
     env: EnvType,
 ) -> str:
     """Default render if not specified."""
-    return self.renderToken(tokens, idx, _options, env)
+    return self.renderToken(tokens, idx, _options, env) # type: ignore[attr-defined]
 
 
 RenderType = Callable[..., str]

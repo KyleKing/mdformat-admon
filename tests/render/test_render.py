@@ -4,7 +4,7 @@ import pytest
 from markdown_it import MarkdownIt
 from markdown_it.utils import read_fixture_file
 
-from mdformat_admon.plugins import mkdocs_admon_plugin, python_markdown_admon_plugin
+from mdformat_admon.plugins import python_markdown_admon_plugin
 
 from ..helpers import print_text
 
@@ -19,8 +19,6 @@ def with_plugin(filename, plugins):
     ("line", "title", "text", "expected", "plugins"),
     [
         *with_plugin("python_markdown.md", [python_markdown_admon_plugin]),
-        *with_plugin("python_markdown.md", [mkdocs_admon_plugin]),
-        *with_plugin("mkdocs.md", [mkdocs_admon_plugin]),
     ],
 )
 def test_render(line, title, text, expected, plugins):

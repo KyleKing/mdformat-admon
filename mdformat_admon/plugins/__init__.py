@@ -1,2 +1,4 @@
-from ._mkdocs_admon import mkdocs_admon_plugin
-from ._python_markdown_admon import python_markdown_admon_plugin
+from ._python_markdown_admon import (
+    format_python_markdown_admon_markup,
+    python_markdown_admon_plugin,
+)
