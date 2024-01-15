@@ -1,4 +1,4 @@
-# `mdformat-admon`
+# mdformat-admon
 
 [![Build Status][ci-badge]][ci-link] [![PyPI version][pypi-badge]][pypi-link]
 
@@ -41,7 +41,7 @@ from markdown_it import MarkdownIt
 from mdformat_admon.plugins import python_markdown_admon_plugin
 
 md = MarkdownIt("commonmark")
-md.use(plugin)
+md.use(python_markdown_admon_plugin)
 
 text = '!!! note ""\n    *content*'
 md.render(text)
