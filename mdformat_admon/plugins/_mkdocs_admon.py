@@ -13,7 +13,7 @@ from ..factories import (
     parse_possible_whitespace_admon_factory,
     parse_tag_and_title,
 )
-from .python_markdown_admon import format_python_markdown_admon_markup
+from ._python_markdown_admon import format_python_markdown_admon_markup
 
 
 def format_admon_markup(
