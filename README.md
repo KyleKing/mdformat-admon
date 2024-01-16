@@ -34,11 +34,11 @@ pipx inject mdformat mdformat-admon
 
 ## HTML Rendering
 
-To generate HTML output, any of the internal plugins can be imported as needed.
+To generate HTML output, `python_markdown_admon_plugin` can be imported from `mdit_plugins`. More plugins can be added in the future as appropriate.
 
 ```py
 from markdown_it import MarkdownIt
-from mdformat_admon.plugins import python_markdown_admon_plugin
+from mdformat_admon.mdit_plugins import python_markdown_admon_plugin
 
 md = MarkdownIt("commonmark")
 md.use(python_markdown_admon_plugin)

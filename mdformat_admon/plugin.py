@@ -9,7 +9,7 @@ from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
-from .plugins import python_markdown_admon_plugin
+from .mdit_plugins import python_markdown_admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:

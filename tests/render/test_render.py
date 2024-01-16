@@ -4,7 +4,7 @@ import pytest
 from markdown_it import MarkdownIt
 from markdown_it.utils import read_fixture_file
 
-from mdformat_admon.plugins import python_markdown_admon_plugin
+from mdformat_admon.mdit_plugins import python_markdown_admon_plugin
 
 from ..helpers import print_text
 
