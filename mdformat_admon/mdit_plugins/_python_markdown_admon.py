@@ -10,6 +10,9 @@ from ..factories import (
     parse_tag_and_title,
 )
 
+PREFIX = "admonition"
+"""Prefix used to differentiate the parsed output."""
+
 
 def format_python_markdown_admon_markup(
     state: StateBlock,
@@ -20,7 +23,7 @@ def format_python_markdown_admon_markup(
     tags, title = parse_tag_and_title(admonition.meta_text)
     tag = tags[0]
 
-    with new_token(state, "admonition", "div") as token:
+    with new_token(state, PREFIX, "div") as token:
         token.markup = admonition.markup
         token.block = True
         token.attrs = {"class": " ".join(["admonition", *tags])}
@@ -30,7 +33,7 @@ def format_python_markdown_admon_markup(
 
         if title:
             title_markup = f"{admonition.markup} {tag}"
-            with new_token(state, "admonition_title", "p") as tkn_title:
+            with new_token(state, f"{PREFIX}_title", "p") as tkn_title:
                 tkn_title.markup = title_markup
                 tkn_title.attrs = {"class": "admonition-title"}
                 tkn_title.map = [start_line, start_line + 1]
@@ -75,4 +78,4 @@ def admonition_logic(
     return result
 
 
-python_markdown_admon_plugin = admon_plugin_factory("admonition", admonition_logic)
+python_markdown_admon_plugin = admon_plugin_factory(PREFIX, admonition_logic)

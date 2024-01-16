@@ -255,3 +255,64 @@ Does not render
 !!!
 content
 .
+
+
+Abbreviated example from Ultralytics Documentation (https://github.com/ultralytics/ultralytics/blob/fd82a671015a30a869d740c45c65f5633d1d93c4/docs/en/guides/isolating-segmentation-objects.md#L15)
+.
+1. Load a model and run `predict()` method on a source.
+
+    ```py
+    from ultralytics import YOLO
+
+    # Load a model
+    model = YOLO('yolov8n-seg.pt')
+
+    # Run inference
+    result = model.predict()
+    ```
+
+    !!! question "No Prediction Arguments?"
+
+        Without specifying a source, the example images from the library will be used:
+
+        ```
+        'ultralytics/assets/bus.jpg'
+        'ultralytics/assets/zidane.jpg'
+        ```
+
+        This is helpful for rapid testing with the `predict()` method.
+
+    For additional information about Segmentation Models, visit the [Segment Task](../tasks/segment.md#models) page. To learn more about `predict()` method, see [Predict Mode](../modes/predict.md) section of the Documentation.
+
+    ---
+
+2. Now iterate over the results and the contours.
+.
+1. Load a model and run `predict()` method on a source.
+
+   ```py
+   from ultralytics import YOLO
+
+   # Load a model
+   model = YOLO('yolov8n-seg.pt')
+
+   # Run inference
+   result = model.predict()
+   ```
+
+   !!! question "No Prediction Arguments?"
+       Without specifying a source, the example images from the library will be used:
+
+       ```
+       'ultralytics/assets/bus.jpg'
+       'ultralytics/assets/zidane.jpg'
+       ```
+
+       This is helpful for rapid testing with the `predict()` method.
+
+   For additional information about Segmentation Models, visit the [Segment Task](../tasks/segment.md#models) page. To learn more about `predict()` method, see [Predict Mode](../modes/predict.md) section of the Documentation.
+
+   ______________________________________________________________________
+
+1. Now iterate over the results and the contours.
+.
