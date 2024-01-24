@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Generator, Sequence
 from contextlib import contextmanager, suppress
-from typing import TYPE_CHECKING, Callable, Generator, NamedTuple, Sequence
+from typing import TYPE_CHECKING, Callable, NamedTuple
 
 from markdown_it import MarkdownIt
 from markdown_it.rules_block import StateBlock
@@ -126,8 +127,7 @@ def parse_possible_whitespace_admon_factory(
         marker_len = max_marker_len
         while marker_len > 0:
             marker_pos = start + marker_len
-            markup = state.src[start:marker_pos]
-            if markup in markers:
+            if (markup := state.src[start:marker_pos]) in markers:
                 marker = markup
                 break
             marker_len -= 1
