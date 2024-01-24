@@ -30,7 +30,7 @@ def render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     #   For reStructuredText, '..' should be indented 3-spaces
     #       While '!!!', , '...', '???', '???+', etc. are indented 4-spaces
     indent = " " * (min(len(prefix), 3) + 1)
-    content = textwrap.indent(separator.join(elements), indent).rstrip()
+    content = textwrap.indent(separator.join(elements), indent)
 
     return title_line + "\n" + content if content else title_line
 
