@@ -20,8 +20,7 @@ if TYPE_CHECKING:
 def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
     """Check for multiple tags when the title is double quoted."""
     re_tags = re.compile(r'^\s*(?P<tokens>[^"]+)\s+"(?P<title>.*)"\S*$')
-    match = re_tags.match(meta_text)
-    if match:
+    if match := re_tags.match(meta_text):
         tags = match["tokens"].strip().split(" ")
         return [tag.lower() for tag in tags], match["title"]
     raise ValueError("No match found for parameters")
@@ -29,8 +28,7 @@ def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
 
 def parse_tag_and_title(admon_meta_text: str) -> tuple[list[str], str]:
     """Separate the tag name from the admonition title."""
-    meta_text = admon_meta_text.strip()
-    if not meta_text:
+    if not (meta_text := admon_meta_text.strip()):
         return [""], ""
 
     with suppress(ValueError):

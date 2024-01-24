@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import textwrap
-from typing import Mapping
+from collections.abc import Mapping
 
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
@@ -23,11 +23,7 @@ def render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     title = node.info.strip()
     title_line = f"{prefix} {title}"
 
-    elements: list[str] = []
-    for child in node.children:
-        rendered = child.render(context)
-        if rendered:
-            elements.append(rendered)
+    elements = [render for child in node.children if (render := child.render(context))]
     separator = "\n\n"
 
     # Then indent to either 3 or 4 based on the length of the prefix
