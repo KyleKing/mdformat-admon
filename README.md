@@ -56,10 +56,11 @@ Because admonition syntax varies wildly between implementations, this package pr
 
 - Supported by `mdformat-admon`
     - [python-markdown](https://python-markdown.github.io/extensions/admonition)
-    - [Github "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) and [community discussion](https://github.com/orgs/community/discussions/16925)
 - Supported by other packages
     - [`mdformat-mkdocs`](https://github.com/KyleKing/mdformat-mkdocs)
         - [MKDocs Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions)
+    - [`mdformat-gfm-alerts`](https://github.com/KyleKing/mdformat-gfm-alerts)
+        - [Github "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)
 - Currently Unsupported (or at least not known to be supported)
     - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html)
     - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions)

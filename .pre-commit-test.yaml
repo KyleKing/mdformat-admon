@@ -10,9 +10,3 @@ repos:
         files: tests/pre-commit-test.md
         types: [markdown]
         language: system
-      - id: mdformat
-        name: mdformat-for-gh-alerts
-        entry: mdformat
-        files: tests/pre-commit-test-gh-alerts.md
-        types: [markdown]
-        language: system
