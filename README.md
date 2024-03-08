@@ -56,18 +56,18 @@ Because admonition syntax varies wildly between implementations, this package pr
 
 - Supported by `mdformat-admon`
     - [python-markdown](https://python-markdown.github.io/extensions/admonition)
+    - [Github "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) and [community discussion](https://github.com/orgs/community/discussions/16925)
 - Supported by other packages
     - [`mdformat-mkdocs`](https://github.com/KyleKing/mdformat-mkdocs)
-        - [MKDocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions)
+        - [MKDocs Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions)
 - Currently Unsupported (or at least not known to be supported)
-    - [Github](https://github.com/orgs/community/discussions/16925)
     - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html)
     - [Remark-Admonitions](https://github.com/elviswolcott/remark-admonitions)
     - [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition)
     - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions) (Note: this plugin *may break* these admonitions by removing or modifying indentation)
     - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts) (Note: this plugin *may break* these admonitions by adding extra characters)
 
-See the example test file: [./tests/pre-commit-test.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/pre-commit-test.md)
+See how different admonition formats are handled in this test file: [./tests/pre-commit-test.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/pre-commit-test.md)
 
 ## Contributing
 
