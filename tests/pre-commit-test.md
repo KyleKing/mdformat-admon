@@ -1,14 +1,10 @@
-# Pre-Commit Test File
+# Admonition, Callout, and Alert Variations Test
 
 Testing `mdformat-admon` as a `pre-commit` hook (`tox -e py#-hook`)
 
-## CommonMark
-
-[Does not specify a syntax for admonitions](https://spec.commonmark.org)
-
 ## Python-Markdown
 
-From: https://python-markdown.github.io/extensions/admonition/
+From: <https://python-markdown.github.io/extensions/admonition>
 
 !!! type "optional explicit title within double quotes"
     Any number of other indented markdown elements.
@@ -29,7 +25,7 @@ From: https://python-markdown.github.io/extensions/admonition/
 
 ## MKDocs
 
-Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
+Based on: <https://squidfunk.github.io/mkdocs-material/reference/admonitions>
 
 ### Default
 
@@ -41,14 +37,14 @@ Based on: https://squidfunk.github.io/mkdocs-material/reference/admonitions
 ### Collapsible
 
 ??? note
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
 
 ???+ note
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-massa, nec semper lorem quam in massa.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
 
 ### Inline
 
@@ -68,6 +64,25 @@ massa, nec semper lorem quam in massa.
 
 ## Github
 
+### 2023 Syntax
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+### 2022 Syntax
+
 > **Note**
 > This is a note
 
@@ -75,9 +90,13 @@ massa, nec semper lorem quam in massa.
 >
 > This is a warning
 
-## MyST
+## Directives
 
-From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html
+Variations of the CommonMark spec for fenced directives
+
+### MyST
+
+From: <https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html>
 
 ```{directivename} arguments
 ---
@@ -131,17 +150,17 @@ But the next block will be parsed as raw text
     ```
 ````
 
-## Remark-Admonitions
+### Markdown-It Containers
 
-From: https://github.com/elviswolcott/remark-admonitions
+From: <https://github.com/markdown-it/markdown-it-container>
 
-:::tip pro tip
-`remark-admonitions` is pretty great!
+::: warning
+*here be dragons*
 :::
 
-## reStructuredText
+### reStructuredText
 
-From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions
+From: <https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions>
 
 .. contents::
 
@@ -157,7 +176,7 @@ From: https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admo
    :depth: 2
 ```
 
-From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html
+From: <https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html>
 
 ```
 .. directivename:: arguments
@@ -168,28 +187,52 @@ From: https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.h
    directive content
 ```
 
+### PyMDown
+
+From: <https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition/>
+
+/// admonition | Some title
+Some content
+///
+
+/// admonition | Some title
+    type: warning
+
+Some content
+///
+
+/// note | Some title
+Some content
+///
+
+/// some-custom-type | Some title
+Some content
+///
+
 ## Obsidian
 
-## (New) Callouts
+### (New) Callouts
 
-From: https://help.obsidian.md/How+to/Use+callouts
+From: <https://help.obsidian.md/How+to/Use+callouts>
 
-```
-> [!INFO]
+> [!info]
 > Here's a callout block.
-> It supports **markdown**, [[Internal link|wikilinks]], and [[Embed files|embeds]]!
-> ![[og-image.png]]
-```
+> It supports **Markdown**, [[Internal link|Wikilinks]], and [[Embed files|embeds]]!
+> ![[Engelbart.jpg]]
 
-```
+> [!tip] Callouts can have custom titles
+> Like this one.
+
+> [!faq]- Are callouts foldable?
+> Yes! In a foldable callout, the contents are hidden when the callout is collapsed.
+
 > [!question] Can callouts be nested?
 > > [!todo] Yes!, they can.
 > > > [!example]  You can even use multiple layers of nesting.
-```
 
-## (Old) Plugin
+### (Old) Obsidian Plugin Syntax
 
-From: https://github.com/valentine195/obsidian-admonition
+From: <https://github.com/valentine195/obsidian-admonition>
 
 ```ad-<type> # Admonition type. See below for a list of available types.
 title:                  # Admonition title.
@@ -200,3 +243,31 @@ color:                  # Override the color.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod nulla.
 
 ```
+
+## Mozilla
+
+From: <https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN#notes_warnings_and_callouts>
+
+> **Note:** This is how you write a note.
+>
+> It can have multiple lines.
+
+> **Warning:** This is how you write a warning.
+>
+> It can have multiple paragraphs.
+
+> **Callout:** **This is how you write a callout.**
+>
+> It can have multiple paragraphs.
+
+> **Warnung:** So schreibt man eine Warnung.
+
+> **Note:** This is how you write a note.
+>
+> It can contain code blocks.
+>
+> ```js
+> const s = "I'm in a code block";
+> ```
+>
+> Like that.
