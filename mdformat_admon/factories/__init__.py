@@ -1,4 +1,4 @@
-from ._factories import (
+from ._whitespace_admon_factories import (
     AdmonitionData,
     admon_plugin_factory,
     new_token,

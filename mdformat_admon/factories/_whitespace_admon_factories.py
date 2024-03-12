@@ -1,4 +1,4 @@
-"""Note, this is ported from `markdown-it-admon<https://github.com/commenthol/markdown-it-admon>`."""
+"""Note, this is ported from `markdown-it-admon` <https://github.com/commenthol/markdown-it-admon>."""
 
 from __future__ import annotations
 
