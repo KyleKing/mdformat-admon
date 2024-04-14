@@ -342,3 +342,22 @@ Deterministic indents for HTML (Snippet adapted from ULtralytics documentation)
            <figcaption>Example full-size output</figcaption>
         </figure>
 .
+
+Do not modify multi-line code from: https://github.com/KyleKing/mdformat-mkdocs/issues/23
+.
+!!! info
+    ```python
+    # Line 1
+
+
+    # Line 4
+    ```
+.
+!!! info
+    ```python
+    # Line 1
+
+
+    # Line 4
+    ```
+.
