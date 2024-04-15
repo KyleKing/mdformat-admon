@@ -73,6 +73,7 @@ def search_admon_end(state: StateBlock, start_line: int, end_line: int) -> int:
 
     # Search for the end of the block
     next_line = start_line
+    is_fenced = False
     while True:
         next_line += 1
         if next_line >= end_line:
@@ -83,10 +84,14 @@ def search_admon_end(state: StateBlock, start_line: int, end_line: int) -> int:
         maximum = state.eMarks[next_line]
         is_empty = state.sCount[next_line] < state.blkIndent
 
-        # two consecutive empty lines autoclose the block
-        if is_empty and was_empty:
+        # two consecutive empty lines autoclose the block, unless the block is fenced
+        if not is_fenced and is_empty and was_empty:
             break
         was_empty = is_empty
+
+        # Check if line starts with ```
+        if state.src[pos : pos + 3] == "```":
+            is_fenced = not is_fenced
 
         if pos < maximum and state.sCount[next_line] < state.blkIndent:
             # non-empty line with negative indent should stop the block:
