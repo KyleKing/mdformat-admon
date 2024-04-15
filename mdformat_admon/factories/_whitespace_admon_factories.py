@@ -5,17 +5,15 @@ from __future__ import annotations
 import re
 from collections.abc import Generator, Sequence
 from contextlib import contextmanager, suppress
-from typing import TYPE_CHECKING, Callable, NamedTuple
+from typing import Callable, NamedTuple
 
 from markdown_it import MarkdownIt
+from markdown_it.renderer import RendererProtocol
+from markdown_it.ruler import RuleOptionsType
 from markdown_it.rules_block import StateBlock
+from markdown_it.token import Token
+from markdown_it.utils import EnvType, OptionsDict
 from mdit_py_plugins.utils import is_code_block
-
-if TYPE_CHECKING:
-    from markdown_it.renderer import RendererProtocol
-    from markdown_it.ruler import RuleOptionsType
-    from markdown_it.token import Token
-    from markdown_it.utils import EnvType, OptionsDict
 
 
 def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
