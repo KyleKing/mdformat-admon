@@ -11,6 +11,7 @@ from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererProtocol
 from markdown_it.ruler import RuleOptionsType
 from markdown_it.rules_block import StateBlock
+from markdown_it.rules_inline import StateInline
 from markdown_it.token import Token
 from markdown_it.utils import EnvType, OptionsDict
 from mdit_py_plugins.utils import is_code_block
@@ -175,7 +176,11 @@ def parse_possible_whitespace_admon_factory(
 
 
 @contextmanager
-def new_token(state: StateBlock, name: str, kind: str) -> Generator[Token, None, None]:
+def new_token(
+    state: StateBlock | StateInline,
+    name: str,
+    kind: str,
+) -> Generator[Token, None, None]:
     yield state.push(f"{name}_open", kind, 1)
     state.push(f"{name}_close", kind, -1)
 
