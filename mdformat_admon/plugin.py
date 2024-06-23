@@ -3,17 +3,13 @@
 from __future__ import annotations
 
 import textwrap
+from collections.abc import Mapping
 
 from markdown_it import MarkdownIt
 from mdformat.renderer import RenderContext, RenderTreeNode
 from mdformat.renderer.typing import Render
 
 from .mdit_plugins import python_markdown_admon_plugin
-
-try:
-    from beartype.typing import Mapping
-except ImportError:
-    from collections.abc import Mapping
 
 
 def update_mdit(mdit: MarkdownIt) -> None:

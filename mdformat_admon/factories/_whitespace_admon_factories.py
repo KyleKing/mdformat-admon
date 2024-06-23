@@ -54,9 +54,9 @@ def validate_admon_meta(meta_text: str) -> bool:
 class AdmonState(NamedTuple):
     """Frozen state."""
 
-    parentType: str
-    lineMax: int
-    blkIndent: int
+    parent_type: str
+    line_max: int
+    blk_indent: int
 
 
 class AdmonitionData(NamedTuple):
@@ -129,6 +129,8 @@ def parse_possible_whitespace_admon_factory(
         # Check out the rest of the marker string
         marker = ""
         marker_len = max_marker_len
+        marker_pos = 0
+        markup = ""
         while marker_len > 0:
             marker_pos = start + marker_len
             if (markup := state.src[start:marker_pos]) in markers:
@@ -146,9 +148,9 @@ def parse_possible_whitespace_admon_factory(
             return True
 
         old_state = AdmonState(
-            parentType=state.parentType,
-            lineMax=state.lineMax,
-            blkIndent=state.blkIndent,
+            parent_type=state.parentType,
+            line_max=state.lineMax,
+            blk_indent=state.blkIndent,
         )
         state.parentType = "admonition"
 
@@ -192,7 +194,7 @@ def default_render(
     _options: OptionsDict,
     env: EnvType,
 ) -> str:
-    """Default render if not specified."""
+    """Render token if no more specific renderer is specified."""
     return self.renderToken(tokens, idx, _options, env)  # type: ignore[attr-defined]
 
 

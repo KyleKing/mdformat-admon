@@ -2,7 +2,7 @@
 
 from markdown_it.rules_block import StateBlock
 
-from ..factories import (
+from mdformat_admon.factories import (
     AdmonitionData,
     admon_plugin_factory,
     new_token,
@@ -45,16 +45,16 @@ def format_python_markdown_admon_markup(
 
         state.md.block.tokenize(state, start_line + 1, admonition.next_line)
 
-    state.parentType = admonition.old_state.parentType
-    state.lineMax = admonition.old_state.lineMax
-    state.blkIndent = admonition.old_state.blkIndent
+    state.parentType = admonition.old_state.parent_type
+    state.lineMax = admonition.old_state.line_max
+    state.blkIndent = admonition.old_state.blk_indent
     state.line = admonition.next_line
 
 
 def admonition_logic(
     state: StateBlock,
-    startLine: int,
-    endLine: int,
+    start_line: int,
+    end_line: int,
     silent: bool,
 ) -> bool:
     """Parse Python Markdown-style Admonitions.
@@ -71,9 +71,9 @@ def admonition_logic(
     parse_possible_whitespace_admon = parse_possible_whitespace_admon_factory(
         markers={"!!!"},
     )
-    result = parse_possible_whitespace_admon(state, startLine, endLine, silent)
+    result = parse_possible_whitespace_admon(state, start_line, end_line, silent)
     if isinstance(result, AdmonitionData):
-        format_python_markdown_admon_markup(state, startLine, admonition=result)
+        format_python_markdown_admon_markup(state, start_line, admonition=result)
         return True
     return result
 
