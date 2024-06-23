@@ -45,9 +45,9 @@ def format_python_markdown_admon_markup(
 
         state.md.block.tokenize(state, start_line + 1, admonition.next_line)
 
-    state.parentType = admonition.old_state.parent_type
-    state.lineMax = admonition.old_state.line_max
-    state.blkIndent = admonition.old_state.blk_indent
+    state.parentType = admonition.old_state.parentType
+    state.lineMax = admonition.old_state.lineMax
+    state.blkIndent = admonition.old_state.blkIndent
     state.line = admonition.next_line
 
 

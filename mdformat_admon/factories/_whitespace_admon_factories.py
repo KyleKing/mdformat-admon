@@ -52,11 +52,11 @@ def validate_admon_meta(meta_text: str) -> bool:
 
 
 class AdmonState(NamedTuple):
-    """Frozen state."""
+    """Frozen state using the same variable case."""
 
-    parent_type: str
-    line_max: int
-    blk_indent: int
+    parentType: str  # noqa: N815
+    lineMax: int  # noqa: N815
+    blkIndent: int  # noqa: N815
 
 
 class AdmonitionData(NamedTuple):
@@ -148,9 +148,9 @@ def parse_possible_whitespace_admon_factory(
             return True
 
         old_state = AdmonState(
-            parent_type=state.parentType,
-            line_max=state.lineMax,
-            blk_indent=state.blkIndent,
+            parentType=state.parentType,
+            lineMax=state.lineMax,
+            blkIndent=state.blkIndent,
         )
         state.parentType = "admonition"
 
