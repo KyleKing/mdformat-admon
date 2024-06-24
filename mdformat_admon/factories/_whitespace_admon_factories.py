@@ -183,6 +183,7 @@ def new_token(
     name: str,
     kind: str,
 ) -> Generator[Token, None, None]:
+    """Create scoped token."""
     yield state.push(f"{name}_open", kind, 1)
     state.push(f"{name}_close", kind, -1)
 
