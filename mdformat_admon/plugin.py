@@ -32,7 +32,7 @@ def render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     indent = " " * (min(len(prefix), 3) + 1)
     content = textwrap.indent(separator.join(elements), indent)
 
-    return title_line + "\n" + content if content else title_line
+    return title_line + "\n\n" + content if content else title_line
 
 
 def render_admon_title(
