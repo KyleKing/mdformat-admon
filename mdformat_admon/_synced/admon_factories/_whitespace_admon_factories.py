@@ -18,7 +18,12 @@ from mdit_py_plugins.utils import is_code_block
 
 
 def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
-    """Check for multiple tags when the title is double quoted."""
+    """Check for multiple tags when the title is double quoted.
+
+    Raises:
+        ValueError: if no tags matched
+
+    """
     re_tags = re.compile(r'^\s*(?P<tokens>[^"]+)\s+"(?P<title>.*)"\S*$')
     if match := re_tags.match(meta_text):
         tags = match["tokens"].strip().split(" ")
@@ -34,8 +39,8 @@ def parse_tag_and_title(admon_meta_text: str) -> tuple[list[str], str]:
     with suppress(ValueError):
         return _get_multiple_tags(meta_text)
 
-    tag, *_title = meta_text.split(" ")
-    joined = " ".join(_title)
+    tag, *title_ = meta_text.split(" ")
+    joined = " ".join(title_)
 
     title = ""
     if not joined:
@@ -54,9 +59,9 @@ def validate_admon_meta(meta_text: str) -> bool:
 class AdmonState(NamedTuple):
     """Frozen state using the same variable case."""
 
-    parentType: str  # noqa: N815
-    lineMax: int  # noqa: N815
-    blkIndent: int  # noqa: N815
+    parentType: str
+    lineMax: int
+    blkIndent: int
 
 
 class AdmonitionData(NamedTuple):
@@ -205,8 +210,8 @@ RenderType = Callable[..., str]
 def admon_plugin_factory(
     prefix: str,
     logic: Callable[[StateBlock, int, int, bool], bool],
-) -> Callable[[MarkdownIt, None | RenderType], None]:
-    def admon_plugin(md: MarkdownIt, render: None | RenderType = None) -> None:
+) -> Callable[[MarkdownIt, RenderType | None], None]:
+    def admon_plugin(md: MarkdownIt, render: RenderType | None = None) -> None:
         render = render or default_render
 
         md.add_render_rule(f"{prefix}_open", render)

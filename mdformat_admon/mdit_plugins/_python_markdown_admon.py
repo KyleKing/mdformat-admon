@@ -2,7 +2,7 @@
 
 from markdown_it.rules_block import StateBlock
 
-from mdformat_admon._synced.factories import (
+from mdformat_admon._synced.admon_factories import (
     AdmonitionData,
     admon_plugin_factory,
     new_token,
