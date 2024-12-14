@@ -7,7 +7,10 @@
 [cov-link]: https://codecov.io/gh/executablebooks/mdformat-admon
  -->
 
-An [mdformat](https://github.com/executablebooks/mdformat) plugin for `admonitions`, a set of helpers for supporting new admonition syntaxes, and tool for rendering admonition HTML.
+An [mdformat](https://github.com/executablebooks/mdformat) plugin for `python-markdown admonitions`
+
+> [!WARNING]
+> This package used to support a set of helpers to build variations of admonition syntaxes and rendering the associated HTML, but those have been moved to `mdformat_admonition_utils`
 
 ## `mdformat` Usage
 
@@ -49,31 +52,6 @@ md.render(text)
 # <p><em>content</em></p>
 # </div>
 ```
-
-## Extensibility
-
-Because admonition syntax varies wildly between implementations, this package provides a set of helpers for building new admonition parsers under `mdformat_admon.factories`.
-
-- Supported by `mdformat-admon`
-    - [python-markdown](https://python-markdown.github.io/extensions/admonition)
-- Supported by other packages
-    - [`mdformat-mkdocs`](https://github.com/KyleKing/mdformat-mkdocs)
-        - [MKDocs Admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions)
-    - [`mdformat-gfm-alerts`](https://github.com/KyleKing/mdformat-gfm-alerts)
-        - [Github "Alerts"](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) and [MicroSoft "Alerts"](https://learn.microsoft.com/en-us/contribute/content/markdown-reference#alerts-note-tip-important-caution-warning)
-    - [`mdformat-obsidian`](https://github.com/KyleKing/mdformat-obsidian)
-        - [Obsidian Callouts](https://help.obsidian.md/How+to/Use+callouts)
-- Currently Unsupported (or at least not known to be supported)
-    - Variations of Directives:
-        - [node.js markdown-it-container](https://github.com/markdown-it/markdown-it-container)
-        - [MyST](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html)
-        - [Sphinx Directives](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html)
-        - [reStructuredText](https://docutils.sourceforge.io/docs/ref/rst/directives.html#specific-admonitions)
-        - [pymdown-extensions](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition)
-        - [PyMDown](https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/admonition)
-    - [Mozilla Callouts](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Markdown_in_MDN#notes_warnings_and_callouts)
-
-See how different admonition formats are handled in this test file: [./tests/pre-commit-test.md](https://raw.githubusercontent.com/KyleKing/mdformat-admon/main/tests/pre-commit-test.md)
 
 ## Contributing
 
