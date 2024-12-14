@@ -1,7 +1,8 @@
 """Python-Markdown Admonition Plugin."""
 
 from markdown_it.rules_block import StateBlock
-from mdformat_admonition_utils.factories import (
+
+from mdformat_admon.factories import (
     AdmonitionData,
     admon_plugin_factory,
     new_token,
