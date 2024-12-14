@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.8, 3.12]
+        python-version: [3.9, 3.12]
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
@@ -28,14 +28,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Installation (deps and package)
-        # we install with flit --pth-file,
-        # so that coverage will be recorded for the module
+        # We install with flit --pth-file, so that coverage will be recorded for the module
+        # Flit could be installed with pipx and use '--python=$(which python)', but
+        #  there are issues with the Windows Runner
         run: |
-          pip install flit
+          pip install flit~=3.9
           flit install --deps=production --extras=test --pth-file
       - name: Run pytest
         run: |
           pytest --cov=$(ls | grep "mdformat_" | head) --cov-report=xml --cov-report=term-missing
+      # Not currently configured
       # - name: Upload to Codecov
       #   if: matrix.os == 'ubuntu-latest' && matrix.python-version == 3.12
       #   uses: codecov/codecov-action@v1
@@ -54,7 +56,7 @@ jobs:
           python-version: 3.12
       - name: Installation (deps and package)
         run: |
-          pip install pre-commit
+          pipx install pre-commit
           pip install .
       - name: run pre-commit with plugin
         run: |
@@ -70,13 +72,9 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
       - name: install flit
         run: |
-          pip install flit~=3.0
+          pipx install flit~=3.9
       - name: Build and publish
         run: |
           flit publish
@@ -85,3 +83,5 @@ jobs:
           FLIT_PASSWORD: ${{ secrets.PYPI_KEY }}
       - name: Generate GitHub Release Notes
         uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true

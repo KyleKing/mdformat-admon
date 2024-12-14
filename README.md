@@ -18,18 +18,24 @@ Add this package wherever you use `mdformat` and the plugin will be auto-recogni
 ```yaml
 repos:
   - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.16
+    rev: 0.7.18
     hooks:
       - id: mdformat
         additional_dependencies:
           - mdformat-admon
 ```
 
-### pipx
+### pipx/uv
 
 ```sh
 pipx install mdformat
 pipx inject mdformat mdformat-admon
+```
+
+Or with uv:
+
+```sh
+uv tool run --from mdformat-admon mdformat
 ```
 
 ## HTML Rendering
