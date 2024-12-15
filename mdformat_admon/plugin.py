@@ -1,4 +1,4 @@
-"""Auto-loaded plugin for mdformat."""
+"""Public Extension."""
 
 from __future__ import annotations
 

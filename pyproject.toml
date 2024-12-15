@@ -25,6 +25,13 @@ requires-python = ">=3.9.0"
 [project.entry-points."mdformat.parser_extension"]
 admon = "mdformat_admon"
 
+[project.optional-dependencies]
+test = [
+  "pytest >= 8.3.4",
+  "pytest-beartype >= 0.1.1",
+  "pytest-cov >= 6.0.0",
+]
+
 [project.urls]
 "Bug Tracker" = "https://github.com/kyleking/mdformat-admon/issues"
 "Changelog" = "https://github.com/kyleking/mdformat-admon/releases"
@@ -131,8 +138,8 @@ trailing_comma_inline_array = true
 inline_arrays = false
 
 [tool.tox]
-basepython = ["python3.12", "python3.9"]
 # Docs: https://tox.wiki/en/4.23.2/config.html#core
+basepython = ["python3.12", "python3.9"]
 env_list = ["py12-test", "py312-pre-commit", "py312-ruff", "py312-type", "py39-hook", "py39-test"]
 isolated_build = true
 requires = ["tox>=4.20.0"]
@@ -140,8 +147,8 @@ skip_missing_interpreters = false
 
 [tool.tox.env."py12-test"]
 commands = [["pytest", "--cov=mdformat_admon", {default = [], extend = true, replace = "posargs"}]]
-deps = ["--requirement=tests/requirements.txt"]
 description = "Optionally, specify: '--exitfirst --failed-first --new-first -vv --beartype-packages=mdformat_admon'"
+extras = ["test"]
 
 [tool.tox.env."py312-pre-commit"]
 commands = [["pre-commit", "run", "--all-files", {default = [], extend = true, replace = "posargs"}]]
@@ -168,7 +175,7 @@ skip_install = true
 
 [tool.tox.env."py39-test"]
 commands = [["pytest", "--cov=mdformat_admon"]]
-deps = ["--requirement=tests/requirements.txt"]
+extras = ["test"]
 
 [tool.tox.env_run_base]
 # Validates that commands are set
