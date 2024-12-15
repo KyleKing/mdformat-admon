@@ -25,13 +25,6 @@ requires-python = ">=3.9.0"
 [project.entry-points."mdformat.parser_extension"]
 admon = "mdformat_admon"
 
-[project.optional-dependencies]
-test = [
-  "pytest >= 8.3.4",
-  "pytest-beartype >= 0.1.1",
-  "pytest-cov >= 6.0.0",
-]
-
 [project.urls]
 "Bug Tracker" = "https://github.com/kyleking/mdformat-admon/issues"
 "Changelog" = "https://github.com/kyleking/mdformat-admon/releases"
@@ -134,44 +127,49 @@ all = true
 in_place = true
 trailing_comma_inline_array = true
 
+[tool.tomlsort.overrides."tool.tox.env.*"]
+inline_arrays = false
+
 [tool.tox]
+basepython = ["python3.12", "python3.9"]
 # Docs: https://tox.wiki/en/4.23.2/config.html#core
-envlist = [
-  "py312-beartype",
-  "py312-mypy",
-  "py312-pre-commit",
-  "py312-ruff",
-  "py39-cov",
-  "py39-hook",
-]
+env_list = ["py12-test", "py312-pre-commit", "py312-ruff", "py312-type", "py39-hook", "py39-test"]
 isolated_build = true
 requires = ["tox>=4.20.0"]
 skip_missing_interpreters = false
 
-[tool.tox."py312-beartype"]
-commands = ["pytest posargs --ff --nf -vv --exitfirst --beartype-packages='mdformat_admon'"]
-extras = "test"
+[tool.tox.env."py12-test"]
+commands = [["pytest", "--cov=mdformat_admon", {default = [], extend = true, replace = "posargs"}]]
+deps = ["--requirement=tests/requirements.txt"]
+description = "Optionally, specify: '--exitfirst --failed-first --new-first -vv --beartype-packages=mdformat_admon'"
 
-[tool.tox."py312-mypy"]
-commands = ["mypy ./mdformat_admon"]
-deps = "mypy>=1.13.0"
-
-[tool.tox."py312-pre-commit"]
-commands = ["pre-commit run posargs:--all-files"]
+[tool.tox.env."py312-pre-commit"]
+commands = [["pre-commit", "run", "--all-files", {default = [], extend = true, replace = "posargs"}]]
 deps = "pre-commit>=4.0.1"
-
-[tool.tox."py312-ruff"]
-commands = [
-  "ruff check . --fix --unsafe-fixes",
-  "ruff format .",
-]
-deps = "ruff>=0.8.3"
 skip_install = true
 
-[tool.tox."py39-cov"]
-commands = ["pytest --cov=mdformat_admon posargs"]
-extras = "test"
+[tool.tox.env."py312-ruff"]
+commands = [
+  ["ruff", "check", ".", "--fix", {default = [], extend = true, replace = "posargs"}],
+  ["ruff", "format", "."],
+]
+deps = "ruff>=0.8.3"
+description = "Optionally, specify: '--unsafe-fixes'"
+skip_install = true
 
-[tool.tox."py39-hook"]
-commands = ["pre-commit run --config .pre-commit-test.yaml posargs:--all-files --verbose --show-diff-on-failure"]
+[tool.tox.env."py312-type"]
+commands = [["mypy", "./mdformat_admon", {default = [], extend = true, replace = "posargs"}]]
+deps = ["mypy>=1.13.0"]
+
+[tool.tox.env."py39-hook"]
+commands = [["pre-commit", "run", "--config=.pre-commit-test.yaml", "--all-files", {default = ["--show-diff-on-failure", "--verbose"], extend = true, replace = "posargs"}]]
 deps = "pre-commit>=4.0.1"
+skip_install = true
+
+[tool.tox.env."py39-test"]
+commands = [["pytest", "--cov=mdformat_admon"]]
+deps = ["--requirement=tests/requirements.txt"]
+
+[tool.tox.env_run_base]
+# Validates that commands are set
+commands = [["error-commands-are-not-set"]]
