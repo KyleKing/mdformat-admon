@@ -10,7 +10,9 @@
 An [mdformat](https://github.com/executablebooks/mdformat) plugin for formatting [`python-markdown` `admonitions`](https://python-markdown.github.io/extensions/admonition) and rendering the associated HTML.
 
 > [!WARNING]
-> This package used to support a set of helpers to build variations of admonition syntaxes and rendering the associated HTML, but that code has been moved to [`mdformat-plugin-template`](https://github.com/KyleKing/mdformat-plugin-template) in the [`_synced/admon_factories/*.py` directory](https://github.com/KyleKing/mdformat-plugin-template/blob/f1fb9ebabab04187b17388730062594de7c18283/package_template/mdformat_%7B%7B%20plugin_name%20%7D%7D/_synced/admon_factories/README.md).
+> `mdformat-admon` and `mdformat-mkdocs>=4.0.0` are no longer compatible. If you have both, you'll want to remove `mdformat-admon`
+>
+> The stylistic formatting for `mkdocs` differs from Python Markdown ([#22](https://github.com/KyleKing/mdformat-admon/pull/22)), so this package is now *only* for Python Markdown without mkdocs.
 
 ## `mdformat` Usage
 
