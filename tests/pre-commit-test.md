@@ -66,19 +66,19 @@ massa, nec semper lorem quam in massa.
 
 ### 2023 Syntax
 
-> \[!NOTE\]
+> [!NOTE]
 > Useful information that users should know, even when skimming content.
 
-> \[!TIP\]
+> [!TIP]
 > Helpful advice for doing things better or more easily.
 
-> \[!IMPORTANT\]
+> [!IMPORTANT]
 > Key information users need to know to achieve their goal.
 
-> \[!WARNING\]
+> [!WARNING]
 > Urgent info that needs immediate user attention to avoid problems.
 
-> \[!CAUTION\]
+> [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 
 ### 2022 Syntax
@@ -215,22 +215,22 @@ Some content
 
 From: <https://help.obsidian.md/How+to/Use+callouts>
 
-> \[!info\]
+> [!info]
 > Here's a callout block.
-> It supports **Markdown**, \[\[Internal link|Wikilinks\]\], and \[\[Embed files|embeds\]\]!
-> !\[\[Engelbart.jpg\]\]
+> It supports **Markdown**, \[[Internal link|Wikilinks]\], and \[[Embed files|embeds]\]!
+> !\[[Engelbart.jpg]\]
 
-> \[!tip\] Callouts can have custom titles
+> [!tip] Callouts can have custom titles
 > Like this one.
 
-> \[!faq\]- Are callouts foldable?
+> [!faq]- Are callouts foldable?
 > Yes! In a foldable callout, the contents are hidden when the callout is collapsed.
 
-> \[!question\] Can callouts be nested?
+> [!question] Can callouts be nested?
 >
-> > \[!todo\] Yes!, they can.
+> > [!todo] Yes!, they can.
 > >
-> > > \[!example\]  You can even use multiple layers of nesting.
+> > > [!example] You can even use multiple layers of nesting.
 
 ### (Old) Obsidian Plugin Syntax
 
