@@ -1,6 +1,6 @@
 """An mdformat plugin for `admonition`."""
 
-__version__ = "2.1.0"
+__version__ = "2.1.1"
 
 __plugin_name__ = "admonition"
 
