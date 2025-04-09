@@ -13,12 +13,12 @@ from .mdit_plugins import python_markdown_admon_plugin
 
 
 def update_mdit(mdit: MarkdownIt) -> None:
-    """Update the parser with supported formats."""
+    """Update the parser."""
     mdit.use(python_markdown_admon_plugin)
 
 
-def render_admon(node: RenderTreeNode, context: RenderContext) -> str:
-    """Render a `RenderTreeNode` of type `admonition`."""
+def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
+    """Render a `RenderTreeNode`."""
     prefix = node.markup.split(" ")[0]
     title = node.info.strip()
     title_line = f"{prefix} {title}"
@@ -35,7 +35,7 @@ def render_admon(node: RenderTreeNode, context: RenderContext) -> str:
     return title_line + "\n" + content if content else title_line
 
 
-def render_admon_title(
+def _render_admon_title(
     node: RenderTreeNode,  # noqa: ARG001
     context: RenderContext,  # noqa: ARG001
 ) -> str:
@@ -47,6 +47,6 @@ def render_admon_title(
 # This can be used to overwrite renderer functions of existing syntax
 # or add support for new syntax.
 RENDERERS: Mapping[str, Render] = {
-    "admonition": render_admon,
-    "admonition_title": render_admon_title,
+    "admonition": _render_admon,
+    "admonition_title": _render_admon_title,
 }
