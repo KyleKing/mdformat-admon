@@ -361,3 +361,208 @@ Do not modify multi-line code from: https://github.com/KyleKing/mdformat-mkdocs/
     # Line 4
     ```
 .
+
+
+Admonition within code fence should not be parsed
+.
+```markdown
+!!! note
+    This should not be parsed as an admonition
+```
+.
+```markdown
+!!! note
+    This should not be parsed as an admonition
+```
+.
+
+
+Deeply nested admonitions
+.
+!!! warning
+    !!! info
+        !!! tip
+            This is deeply nested content
+
+            - Item 1
+            - Item 2
+.
+!!! warning
+    !!! info
+        !!! tip
+            This is deeply nested content
+
+            - Item 1
+            - Item 2
+.
+
+
+Admonition with inline code in title
+.
+!!! note Check `this_function()` for details
+    Content here
+.
+!!! note Check `this_function()` for details
+    Content here
+.
+
+
+Admonition with special characters in title
+.
+!!! warning "Don't forget: save & commit!"
+    Important reminder
+.
+!!! warning "Don't forget: save & commit!"
+    Important reminder
+.
+
+
+Mixed content: lists, code blocks, and blockquotes
+.
+!!! info
+    Here's a list:
+
+    - Item 1
+    - Item 2
+
+    And some code:
+
+    ```bash
+    echo "hello"
+    ```
+
+    > A quote
+.
+!!! info
+    Here's a list:
+
+    - Item 1
+    - Item 2
+
+    And some code:
+
+    ```bash
+    echo "hello"
+    ```
+
+    > A quote
+.
+
+
+Admonition with table
+.
+!!! note
+    | Column 1 | Column 2 |
+    | -------- | -------- |
+    | Value 1  | Value 2  |
+.
+!!! note
+    | Column 1 | Column 2 |
+    | -------- | -------- |
+    | Value 1 | Value 2 |
+.
+
+
+Admonition with links and images
+.
+!!! tip
+    Check out [this guide](https://example.com)
+
+    ![Image](https://example.com/image.png)
+.
+!!! tip
+    Check out [this guide](https://example.com)
+
+    ![Image](https://example.com/image.png)
+.
+
+
+Multiple tag classes with special title
+.
+!!! warning important urgent "Critical: Review Required!"
+    This admonition has multiple classes
+.
+!!! warning important urgent "Critical: Review Required!"
+    This admonition has multiple classes
+.
+
+
+Empty admonition with title
+.
+!!! note Empty but titled
+.
+!!! note Empty but titled
+.
+
+
+Admonition with horizontal rules
+.
+!!! info
+    Section 1
+
+    ---
+
+    Section 2
+.
+!!! info
+    Section 1
+
+    ______________________________________________________________________
+
+    Section 2
+.
+
+
+Admonition with escaped characters
+.
+!!! note
+    Use \*asterisks\* for emphasis
+
+    Or \_underscores\_
+.
+!!! note
+    Use \*asterisks\* for emphasis
+
+    Or \_underscores\_
+.
+
+
+Admonition following paragraph without blank line
+.
+Some paragraph text
+!!! note
+    Content
+.
+Some paragraph text
+
+!!! note
+    Content
+.
+
+
+Consecutive different admonition types
+.
+!!! note
+    First note
+
+!!! warning
+    Warning message
+
+!!! tip
+    Helpful tip
+
+!!! danger
+    Danger zone
+.
+!!! note
+    First note
+
+!!! warning
+    Warning message
+
+!!! tip
+    Helpful tip
+
+!!! danger
+    Danger zone
+.
