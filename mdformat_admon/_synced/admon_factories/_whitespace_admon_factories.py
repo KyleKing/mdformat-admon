@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import re
-from collections.abc import Generator, Sequence
+from collections.abc import Callable, Generator, Sequence
 from contextlib import contextmanager, suppress
-from typing import Callable, NamedTuple
+from typing import NamedTuple
 
 from markdown_it import MarkdownIt
 from markdown_it.renderer import RendererProtocol
