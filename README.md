@@ -18,7 +18,7 @@ An [mdformat](https://github.com/executablebooks/mdformat) plugin for formatting
 
 Add this package wherever you use `mdformat` and the plugin will be auto-recognized. No additional configuration necessary. See [additional information on `mdformat` plugins here](https://mdformat.readthedocs.io/en/stable/users/plugins.html)
 
-### Pre-Commit
+### pre-commit / prek
 
 ```yaml
 repos:
@@ -30,17 +30,17 @@ repos:
           - mdformat-admon
 ```
 
-### pipx/uv
+### uvx
+
+```sh
+uvx --with mdformat-admon mdformat
+```
+
+Or with pipx:
 
 ```sh
 pipx install mdformat
 pipx inject mdformat mdformat-admon
-```
-
-Or with uv:
-
-```sh
-uv tool run --from mdformat-admon mdformat
 ```
 
 ## HTML Rendering
@@ -63,9 +63,9 @@ md.render(text)
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/KyleKing/mdformat-admon/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/kyleking/mdformat-admon/blob/main/CONTRIBUTING.md)
 
-[ci-badge]: https://github.com/kyleking/mdformat-admon/workflows/CI/badge.svg?branch=main
+[ci-badge]: https://github.com/kyleking/mdformat-admon/actions/workflows/tests.yml/badge.svg?branch=main
 [ci-link]: https://github.com/kyleking/mdformat-admon/actions?query=workflow%3ACI+branch%3Amain+event%3Apush
 [pypi-badge]: https://img.shields.io/pypi/v/mdformat-admon.svg
 [pypi-link]: https://pypi.org/project/mdformat-admon
