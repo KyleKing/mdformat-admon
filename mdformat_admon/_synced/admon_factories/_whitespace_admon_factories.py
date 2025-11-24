@@ -16,6 +16,9 @@ from markdown_it.token import Token
 from markdown_it.utils import EnvType, OptionsDict
 from mdit_py_plugins.utils import is_code_block
 
+# Compile regex pattern once at module level for performance
+_RE_TAGS = re.compile(r'^\s*(?P<tokens>[^"]+)\s+"(?P<title>.*)"\S*$')
+
 
 def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
     """Check for multiple tags when the title is double quoted.
@@ -24,8 +27,7 @@ def _get_multiple_tags(meta_text: str) -> tuple[list[str], str]:
         ValueError: if no tags matched
 
     """
-    re_tags = re.compile(r'^\s*(?P<tokens>[^"]+)\s+"(?P<title>.*)"\S*$')
-    if match := re_tags.match(meta_text):
+    if match := _RE_TAGS.match(meta_text):
         tags = match["tokens"].strip().split(" ")
         return [tag.lower() for tag in tags], match["title"]
     raise ValueError("No match found for parameters")
