@@ -24,7 +24,9 @@ def test_code_block_check_returns_false():
     mock_state.blkIndent = 0
 
     # Patch is_code_block to return True to force line 127 to execute
-    with patch("mdformat_admon._synced.admon_factories._whitespace_admon_factories.is_code_block") as mock_is_code:
+    with patch(
+        "mdformat_admon._synced.admon_factories._whitespace_admon_factories.is_code_block"
+    ) as mock_is_code:
         mock_is_code.return_value = True
 
         # Call the parse function

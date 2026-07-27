@@ -44,6 +44,26 @@ tox -e type
 tox -e hook-min
 ```
 
+## One-Off Testing
+
+```bash
+# Create a development environment with local code installed
+tox devenv .venv
+
+# Test mdformat on inline content
+echo '- \[test\]: value' | .venv/bin/mdformat - --extension admon 2>&1
+
+# Test mdformat on a specific file
+.venv/bin/mdformat tests/pre-commit-test.md --extension admon
+
+# Run Python code with local package installed
+.venv/bin/python3 << 'PYTHON'
+import mdformat
+output = mdformat.text("- \[test\]: value", extensions={"admon"})
+print(output)
+PYTHON
+```
+
 ## Architecture
 
 ### Plugin System
@@ -73,6 +93,8 @@ Configuration can be passed via:
     ```
 1. API: `mdformat.text(content, extensions={"admon"}, options={...})`
 
+Boolean flags in `add_cli_argument_group` must use `action="store_const", const=True` (default `None`), never `action="store_true"` (default `False`). `get_conf()` treats a present-but-`False` value the same as an explicit user choice, so a `store_true` default silently overrides `cli_argument = true` set in `.mdformat.toml` whenever the CLI flag isn't passed. `mdformat`'s own CLI builder detects this and raises a `DeprecationWarning` for any plugin flag whose default isn't `None` or `argparse.SUPPRESS`.
+
 ### Testing Strategy
 
 **Snapshot Testing**
@@ -87,8 +109,4 @@ Configuration can be passed via:
 
 ## Development Notes
 
-- This project uses `uv-build` as the build backend
-- Uses `tox` for test automation with multiple Python versions (3.10, 3.14)
-- Pre-commit is configured but the project now uses `prek` (faster alternative)
-- Python 3.10+ is required (see `requires-python` in `pyproject.toml`)
-- Version is defined in `mdformat_admon/__init__.py` as `__version__`
+- **Do not use `uv` commands**—there is no `uv.lock` file. Always use `tox` (installed via mise and available on PATH) which manages environments and dependencies.

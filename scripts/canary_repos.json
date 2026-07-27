@@ -1,0 +1,4 @@
+{
+    "$comment": "Not overwritten by 'copier update' once this file exists (see canary.py's module docstring for how to add an entry, and copier.yml's '_skip_if_exists').",
+    "repos": []
+}

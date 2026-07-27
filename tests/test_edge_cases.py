@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import mdformat
+
 from mdformat_admon._synced.admon_factories import parse_tag_and_title
 
 
@@ -10,14 +11,14 @@ def test_parse_tag_and_title_empty_string():
     """Test parse_tag_and_title with empty string (line 39 coverage)."""
     tags, title = parse_tag_and_title("")
     assert tags == [""]
-    assert title == ""
+    assert not title
 
 
 def test_parse_tag_and_title_whitespace_only():
     """Test parse_tag_and_title with whitespace-only string (line 39 coverage)."""
     tags, title = parse_tag_and_title("   ")
     assert tags == [""]
-    assert title == ""
+    assert not title
 
 
 def test_admonition_marker_in_indented_code_block():

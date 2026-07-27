@@ -36,8 +36,8 @@ def _render_admon(node: RenderTreeNode, context: RenderContext) -> str:
 
 
 def _render_admon_title(
-    node: RenderTreeNode,  # noqa: ARG001
-    context: RenderContext,  # noqa: ARG001
+    node: RenderTreeNode,  # ruff: ignore[unused-function-argument]
+    context: RenderContext,  # ruff: ignore[unused-function-argument]
 ) -> str:
     """Skip rendering the title when called from the `node.children`."""
     return ""

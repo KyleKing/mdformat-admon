@@ -265,7 +265,7 @@ Abbreviated example from Ultralytics Documentation (https://github.com/ultralyti
     from ultralytics import YOLO
 
     # Load a model
-    model = YOLO('yolov8n-seg.pt')
+    model = YOLO("yolov8n-seg.pt")
 
     # Run inference
     result = model.predict()
@@ -294,7 +294,7 @@ Abbreviated example from Ultralytics Documentation (https://github.com/ultralyti
    from ultralytics import YOLO
 
    # Load a model
-   model = YOLO('yolov8n-seg.pt')
+   model = YOLO("yolov8n-seg.pt")
 
    # Run inference
    result = model.predict()
