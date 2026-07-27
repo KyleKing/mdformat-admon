@@ -1,4 +1,31 @@
 {
     "$comment": "Not overwritten by 'copier update' once this file exists (see canary.py's module docstring for how to add an entry, and copier.yml's '_skip_if_exists').",
-    "repos": []
+    "repos": [
+        {
+            "name": "sana",
+            "patterns": [
+                "docs/**/*.md"
+            ],
+            "url": "https://github.com/NVlabs/Sana"
+        },
+        {
+            "name": "speculators",
+            "options": {
+                "end_of_line": "lf",
+                "number": true,
+                "wrap": "no"
+            },
+            "patterns": [
+                "docs/**/*.md"
+            ],
+            "url": "https://github.com/vllm-project/speculators"
+        },
+        {
+            "name": "uv",
+            "patterns": [
+                "docs/**/*.md"
+            ],
+            "url": "https://github.com/astral-sh/uv"
+        }
+    ]
 }
